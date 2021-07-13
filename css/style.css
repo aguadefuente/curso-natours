@@ -1,0 +1,125 @@
+/*
+COLORS:
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+*/
+
+/***********BASIC RESET******************/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*
+- Arriba lo que hicimos fue usar el "univesal selector" para resetear los margenes y padding
+que por defecto tendríamos según los browsers. Es un basic reset.
+- Box sizing es útil a la hora de calcular todo lo que es el tamaña de los elementos y querer
+agregarle paddings y margins...etc.
+*/
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  padding: 30px;
+}
+/*
+- font-family, es de google fonts, cuyo link hay que agregar en el código html, head section.
+- font-weight, 400 es igual a normal (default), y 700 igual a bold
+- line-height, si ponemos un número significa que es lo que se va a multiplicar del font size
+(se pueden usar px, rem, %...etc)
+- Agregamos un padding en el body, lo que hace que todos los elementos de nuestra página ahora
+tengan el mismo, salvo lo reescribamos.
+*/
+
+/***************HEADER*****************/
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 133, 0.8)
+    ),
+    url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
+  position: relative;
+}
+/*
+-El header tiene una altura según el view port - no del 100% sino del 95%, para que siempre
+guarde esa dimensión.
+-Tiene una background image, y le ponemos antes de la url el linear gradient para que tenga
+como una veladura por encima. La dirección del gradient es de right to bottom y tiene dos 
+colores, de más claro a más oscuro. 
+- Cover, hace que siempre la imagen complete el contenedor. 
+- background-position, en nuestro caso pusimos top, hace que cuando agrandemos o achiquemos
+la página siempre se vea la parte de arriba de la imagen.
+- clip-path, me sirve para hacer figuras con los contenedores, imágenes.
+Por eso vemos el corte que tiene la imágen en el header. 
+La página https://bennettfeely.com/clippy/ te calcula cada lado para formar distintas figuras.
+*/
+
+.logo-box {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+/*es el div que contiene el logo.
+- Acá la position es absolute. Pero si vemos en el header class su position es relative. Esto
+hace un juego entre ambos elementos. Header es el parent del logo-box, y siendo su position
+relative ahora el absolute position del child en en relación a él y no al body. Ver esta
+página mejor explicado  
+https://css-tricks.com/absolute-positioning-inside-relative-positioning/
+*/
+
+.logo {
+  height: 35px;
+}
+/*
+Sólo hace falta especificar el height y no el width, este lo pone el browser 
+*/
+
+.text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/*
+- Usamos transform:translate porque el positioning top y left lo mide desde los bordes
+del div y no hace que quede centrado, mientras que transform:translate mueve el div desde 
+el mismo, no desde su borde, es así que termina centrándose. Tb hace que sea responsive,
+y se mueva según el tamaño del browser.
+*/
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.heading-primary-main {
+  display: block;
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 17.4px;
+}
+/*
+-usamos display block para que cada span esté uno debajo del otro, de lo contrario by default
+son un inline element y estarían uno al lado del otro
+-el font-weight lo especificamos porque por defecto h1 tiene bold, y se sobreescribe al que
+ya habíamos puesto en el body por estar el h1 luego del body. Así que volvemos a poner 400px
+para que no sea bold.
+*/
