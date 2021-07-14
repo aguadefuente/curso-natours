@@ -90,6 +90,8 @@ Sólo hace falta especificar el height y no el width, este lo pone el browser
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  text-align: center; /*es para alinear el button*/
 }
 /*
 - Usamos transform:translate porque el positioning top y left lo mide desde los bordes
@@ -101,6 +103,10 @@ y se mueva según el tamaño del browser.
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
+
+  backface-visibility: hidden; /*es para que funcione mejor la animación*/
+
+  margin-bottom: 60px; /*es para que el button se separe del heading*/
 }
 
 .heading-primary-main {
@@ -108,6 +114,10 @@ y se mueva según el tamaño del browser.
   font-size: 60px;
   font-weight: 400;
   letter-spacing: 35px;
+
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
 }
 
 .heading-primary-sub {
@@ -115,6 +125,8 @@ y se mueva según el tamaño del browser.
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 17.4px;
+
+  animation: moveInRight 1s ease-out;
 }
 /*
 -usamos display block para que cada span esté uno debajo del otro, de lo contrario by default
@@ -122,4 +134,148 @@ son un inline element y estarían uno al lado del otro
 -el font-weight lo especificamos porque por defecto h1 tiene bold, y se sobreescribe al que
 ya habíamos puesto en el body por estar el h1 luego del body. Así que volvemos a poner 400px
 para que no sea bold.
+- Aniation property, en el heading-primary-sub usé el shorthand (de animation-name, animation-duration,
+animation-timing-function. 
 */
+
+/********ANIMATIÓN del Título del header*************/
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/*
+- La animación podemos hacerla con Transition y luego hoover. Pero en este caso vemos otro modo 
+con @keyframe, se le pone un nombre (identifier) y luego se especifica 0% (cuando comienza) 100% (cuando
+termina) desde donde hasta donde va la animación. 
+-En 0 ponemos opacity 0 para que el elemento no se vea, y en 100 ponemos opacity 1 para que sea visible.
+-Transform:translatex, es que se mueva en dirección el eje x (horizontalmente), si es número negativo se
+mueve de derecha a izq y si es positivo de izq a der. 
+-Ahora vamos al selector (en nuestro caso: .heading-primary-main y sub) que queremos animar y 
+colocamos animation-name y animation-duration
+- Otra properties de Animation es Delay:..s, para que la animación empiece después de x tiempo. Otra
+animation-iteration-count:nº, por ejemplo si ponemos 3, se repite 3 veces....etc
+- A veces la animación, sin que se sepa bien porqué, rebota (en mi caso no hace eso el browser), 
+para evitarlo en .heading-primary usamos backface-visibility:hidden; 
+es un truco no se sabe porqué funciona. 
+*/
+
+/***********BUTTON************/
+.btn,
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 100px;
+  transition: all 0.2s;
+
+  position: relative; /*esto es para la animación con seudo-element*/
+}
+/*acá separo los selectors con comas, y tengo que poner primero el simple selector
+y luego los seudo-class
+- Acá vamos a hacer una animación más simple con Transition (en vez de con @keyframe). 
+Transition es el shorthand. "all" significa que queremos animar todas las propiedades de arriba, 
+usamos esto cuando no estamos seguros de cual animar o no queremos escribir todas las propiedades. 
+*/
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+/*
+- btn con seudo-class :link (es para darle estilo a los unvisited links) y :visited.
+- btn con seudo-class :hover (cuando nos posicionamos encima con el mouse), :active (cuando hagamos
+click sobre el botón)
+- transform:translateY, se moverá de arriba a abajo. Número negativo hace que vaya hacia arriba. 
+*/
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}
+
+/*****ANIMACION con seudo-element ::******/
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  transition: all 0.4s;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+/*
+- La idea es crear otro botón igual pero que esté por detrás, por eso usamos este seudo-element
+- Siempre en los seudo-element tenemos que poner "content" aunque despues lo dejemos vacío y el display
+- display inline-block porque así tb es el display del btn.
+- heigth y width es el 100% del tamaño del btn, que sería como su parent.
+- Positioning absolute tiene que tener un reference, en nuestro caso no queremos que sea el header ni el
+body, sino el btn, entonces es ahí donde le pondremos positon:relative
+- z-indez negativo es para que este botón se vaya atrás
+*/
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+/*
+Con esto hacemos que cuando hagamos hover aparezca el btn::after que especificamos arriba y de agrande
+en 1.5 veces su tamaño y que se ponga transparente (opacity)*/
+
+@keyframes moveInButton {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.btn-animated {
+  animation: moveInButton 0.5s ease-out;
+  animation-delay: 0.75s;
+  animation-fill-mode: backwards;
+}
