@@ -10,7 +10,9 @@ Dark green: #28b485
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: inherit;
+  /* box-sizing: border-box; esto lo vamos a colocar en el body para aprovechar el inherit keyword 
+  en nuestra página web*/
 }
 /*
 - Arriba lo que hicimos fue usar el "univesal selector" para resetear los margenes y padding
@@ -29,9 +31,11 @@ fuente con el browser. Lo que queremos es definirlo en porcentaje.
 Si ponemos font-size 100% equivaldría a 16px, porque ese es el default value de los font-size.
 Como queremos que sean 10px hacemos regla de tres simples 100*10/16 = 62.5%
 Ahora el user va a poder zoom in and zoom out no solo el font-size sino tb la página en sí
+- Nota: el viejo Internet expolorer no soporta rems
 */
 
 body {
+  box-sizing: border-box;
   font-family: "Lato", sans-serif;
   font-weight: 400;
   /* font-size: 16px; antes de crear el root teníamos este font-size 
