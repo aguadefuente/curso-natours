@@ -19,13 +19,22 @@ que por defecto tendríamos según los browsers. Es un basic reset.
 agregarle paddings y margins...etc.
 */
 
+html {
+  font-size: 10px;
+}
+/*
+root element. Así todas nuestras unidades rem hacen referencia a este root
+*/
+
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  /* font-size: 16px; antes de crear el root teníamos este font-size 
+  que ahora sacamos para poner las demás unidades en rem*/
   line-height: 1.7;
   color: #777;
-  padding: 30px;
+  padding: 3rem;
+  /*antes habíamos puesto 30px. Ahora son 3rem que multiplicado por 10px del html es igual a 30px*/
 }
 /*
 - font-family, es de google fonts, cuyo link hay que agregar en el código html, head section.
@@ -67,8 +76,8 @@ La página https://bennettfeely.com/clippy/ te calcula cada lado para formar dis
 
 .logo-box {
   position: absolute;
-  top: 40px;
-  left: 40px;
+  top: 4rem; /*antes pusimos 40px. Ahora es 4 por 10px del html root element igual 40px*/
+  left: 4rem; /*lo mismo*/
 }
 /*es el div que contiene el logo.
 - Acá la position es absolute. Pero si vemos en el header class su position es relative. Esto
@@ -79,7 +88,8 @@ https://css-tricks.com/absolute-positioning-inside-relative-positioning/
 */
 
 .logo {
-  height: 35px;
+  height: 3.5rem;
+  /* igual 35px*/
 }
 /*
 Sólo hace falta especificar el height y no el width, este lo pone el browser 
@@ -111,9 +121,9 @@ y se mueva según el tamaño del browser.
 
 .heading-primary-main {
   display: block;
-  font-size: 60px;
+  font-size: 6rem; /* igual a 60px*/
   font-weight: 400;
-  letter-spacing: 35px;
+  letter-spacing: 3.5rem; /*igual a 35px*/
 
   animation-name: moveInLeft;
   animation-duration: 1s;
@@ -122,9 +132,9 @@ y se mueva según el tamaño del browser.
 
 .heading-primary-sub {
   display: block;
-  font-size: 20px;
+  font-size: 2rm; /*igual a 20px*/
   font-weight: 700;
-  letter-spacing: 17.4px;
+  letter-spacing: 1.74rem; /*igual a 17.4px*/
 
   animation: moveInRight 1s ease-out;
 }
@@ -143,10 +153,10 @@ animation-timing-function.
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-100px);
+    transform: translateX(-10rem); /*igual a -100px*/
   }
   80% {
-    transform: translateX(10px);
+    transform: translateX(1rem); /*igual a 10px*/
   }
   100% {
     opacity: 1;
@@ -157,10 +167,10 @@ animation-timing-function.
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(10rem); /*igual a 100px*/
   }
   80% {
-    transform: translateX(-10px);
+    transform: translateX(-1rem); /*igual a -10px*/
   }
   100% {
     opacity: 1;
@@ -189,9 +199,9 @@ es un truco no se sabe porqué funciona.
 .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
-  padding: 15px 40px;
+  padding: 1.5rem 4rem; /*igual a 15px y 40px*/
   display: inline-block;
-  border-radius: 100px;
+  border-radius: 10rem; /*igual a 100px*/
   transition: all 0.2s;
 
   position: relative; /*esto es para la animación con seudo-element*/
@@ -232,7 +242,7 @@ click sobre el botón)
   display: inline-block;
   height: 100%;
   width: 100%;
-  border-radius: 100px;
+  border-radius: 10rem; /*igual a 100px*/
   position: absolute;
   top: 0;
   left: 0;
@@ -265,7 +275,7 @@ en 1.5 veces su tamaño y que se ponga transparente (opacity)*/
 @keyframes moveInButton {
   0% {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(3rem); /*igual a 30px*/
   }
 
   100% {
@@ -279,3 +289,6 @@ en 1.5 veces su tamaño y que se ponga transparente (opacity)*/
   animation-delay: 0.75s;
   animation-fill-mode: backwards;
 }
+/*
+Animation-fill-mode hace que se mantenga en opacity:0 y se translate 30px como especificamos en el
+@keyframe recién cuando pase el tiempo del delay*/
