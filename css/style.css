@@ -20,10 +20,15 @@ agregarle paddings y margins...etc.
 */
 
 html {
-  font-size: 10px;
+  font-size: 62.5%;
 }
 /*
-root element. Así todas nuestras unidades rem hacen referencia a este root
+root element. Así todas nuestras unidades rem hacen referencia a este root y se multiplicarían por 10
+- No vamos a definir el font-size en px, porque eso impide al usuario modificar luego el tamaño de la
+fuente con el browser. Lo que queremos es definirlo en porcentaje.
+Si ponemos font-size 100% equivaldría a 16px, porque ese es el default value de los font-size.
+Como queremos que sean 10px hacemos regla de tres simples 100*10/16 = 62.5%
+Ahora el user va a poder zoom in and zoom out no solo el font-size sino tb la página en sí
 */
 
 body {
@@ -116,7 +121,7 @@ y se mueva según el tamaño del browser.
 
   backface-visibility: hidden; /*es para que funcione mejor la animación*/
 
-  margin-bottom: 60px; /*es para que el button se separe del heading*/
+  margin-bottom: 6rem; /*es para que el button se separe del heading*/
 }
 
 .heading-primary-main {
@@ -205,6 +210,7 @@ es un truco no se sabe porqué funciona.
   transition: all 0.2s;
 
   position: relative; /*esto es para la animación con seudo-element*/
+  font-size: 1.6rem; /*es igual a 16px*/
 }
 /*acá separo los selectors con comas, y tengo que poner primero el simple selector
 y luego los seudo-class
@@ -219,7 +225,7 @@ usamos esto cuando no estamos seguros de cual animar o no queremos escribir toda
 }
 
 .btn:active {
-  transform: translateY(-1px);
+  transform: translateY(-0.1rem);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
 }
 
