@@ -1,22 +1,24 @@
 /*
 COLORS:
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
+Light-green: #7ed56f
+Medium-green: #55c57a
+Dark-green: #28b485
 */
 
 /***********BASIC RESET******************/
 
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
   /* box-sizing: border-box; esto lo vamos a colocar en el body para aprovechar el inherit keyword 
-  en nuestra página web*/
+  en nuestra página web y es una mejor práctica poner acá inherit y en el body border-box*/
 }
 /*
 - Arriba lo que hicimos fue usar el "univesal selector" para resetear los margenes y padding
-que por defecto tendríamos según los browsers. Es un basic reset.
+que por defecto tendríamos según los browsers. Es un basic reset. Agregamos tb pseudo-classes.
 - Box sizing es útil a la hora de calcular todo lo que es el tamaña de los elementos y querer
 agregarle paddings y margins...etc.
 */
@@ -141,7 +143,7 @@ y se mueva según el tamaño del browser.
 
 .heading-primary-sub {
   display: block;
-  font-size: 2rm; /*igual a 20px*/
+  font-size: 2rem; /*igual a 20px*/
   font-weight: 700;
   letter-spacing: 1.74rem; /*igual a 17.4px*/
 
@@ -211,6 +213,7 @@ es un truco no se sabe porqué funciona.
   padding: 1.5rem 4rem; /*igual a 15px y 40px*/
   display: inline-block;
   border-radius: 10rem; /*igual a 100px*/
+
   transition: all 0.2s;
 
   position: relative; /*esto es para la animación con seudo-element*/
