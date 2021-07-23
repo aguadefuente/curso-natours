@@ -22,25 +22,29 @@
 
 <body>
     <header class="header">
-        <div class="logo-box">
-            <img src="img/logo-white.png" alt="logo" class="logo">
+        <!--standalone block component-->
+        <div class="header__logo-box">
+            <!--a block element component-->
+            <img src="img/logo-white.png" alt="logo" class="header__logo">
         </div>
         <!--El logo lo insertamos dentro de un div. El header es el parent del div a la hora de
 entender como positioning. Ver el tema de position en el style.css-->
 
-        <div class="text-box">
+        <div class="header__text-box">
             <h1 class="heading-primary">
-                <span class="heading-primary-main">
+                <!--standalone block component-->
+                <span class="heading-primary--main">
+                    <!--a block element modifier component-->
                     Outdoors
                 </span>
-                <span class="heading-primary-sub">
+                <span class="heading-primary--sub">
                     is where life happens
                 </span>
             </h1>
             <!--Acá dentro de h1 colocamos dos span para espués poder darles un estilo propio a cada uno.
 Los H1 son importantes para el SEO, ya luego usar h2 y siguientes-->
 
-            <a hfer="#" class="btn btn-white btn-animated">
+            <a hfer="#" class="btn btn--white btn--animated">
                 Discover our tours
             </a>
             <!--Este es el botón del header. Le pusimos dos class name, algo que lo diferencia del id-->

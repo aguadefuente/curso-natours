@@ -85,7 +85,7 @@ Por eso vemos el corte que tiene la imágen en el header.
 La página https://bennettfeely.com/clippy/ te calcula cada lado para formar distintas figuras.
 */
 
-.logo-box {
+.header__logo-box {
   position: absolute;
   top: 4rem; /*antes pusimos 40px. Ahora es 4 por 10px del html root element igual 40px*/
   left: 4rem; /*lo mismo*/
@@ -98,7 +98,7 @@ página mejor explicado
 https://css-tricks.com/absolute-positioning-inside-relative-positioning/
 */
 
-.logo {
+.header__logo {
   height: 3.5rem;
   /* igual 35px*/
 }
@@ -106,7 +106,7 @@ https://css-tricks.com/absolute-positioning-inside-relative-positioning/
 Sólo hace falta especificar el height y no el width, este lo pone el browser 
 */
 
-.text-box {
+.header__text-box {
   position: absolute;
   top: 40%;
   left: 50%;
@@ -130,7 +130,7 @@ y se mueva según el tamaño del browser.
   margin-bottom: 6rem; /*es para que el button se separe del heading*/
 }
 
-.heading-primary-main {
+.heading-primary--main {
   display: block;
   font-size: 6rem; /* igual a 60px*/
   font-weight: 400;
@@ -141,7 +141,7 @@ y se mueva según el tamaño del browser.
   animation-timing-function: ease-out;
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
   display: block;
   font-size: 2rem; /*igual a 20px*/
   font-weight: 700;
@@ -243,7 +243,7 @@ click sobre el botón)
 - transform:translateY, se moverá de arriba a abajo. Número negativo hace que vaya hacia arriba. 
 */
 
-.btn-white {
+.btn--white {
   background-color: #fff;
   color: #777;
 }
@@ -264,7 +264,7 @@ click sobre el botón)
   transition: all 0.4s;
 }
 
-.btn-white::after {
+.btn--white::after {
   background-color: #fff;
 }
 /*
@@ -297,7 +297,7 @@ en 1.5 veces su tamaño y que se ponga transparente (opacity)*/
   }
 }
 
-.btn-animated {
+.btn--animated {
   animation: moveInButton 0.5s ease-out;
   animation-delay: 0.75s;
   animation-fill-mode: backwards;
