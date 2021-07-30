@@ -1,11 +1,10 @@
-@charset "UTF-8";
-/*
-COLORS:
-Light-green: #7ed56f
-Medium-green: #55c57a
-Dark-green: #28b485
-*/
+//variables
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
 /***********BASIC RESET******************/
+
 *,
 *::after,
 *::before {
@@ -15,17 +14,16 @@ Dark-green: #28b485
   /* box-sizing: border-box; esto lo vamos a colocar en el body para aprovechar el inherit keyword 
   en nuestra página web y es una mejor práctica poner acá inherit y en el body border-box*/
 }
-
 /*
 - Arriba lo que hicimos fue usar el "univesal selector" para resetear los margenes y padding
 que por defecto tendríamos según los browsers. Es un basic reset. Agregamos tb pseudo-classes.
 - Box sizing es útil a la hora de calcular todo lo que es el tamaña de los elementos y querer
 agregarle paddings y margins...etc.
 */
+
 html {
   font-size: 62.5%;
 }
-
 /*
 root element. Así todas nuestras unidades rem hacen referencia a este root y se multiplicarían por 10
 - No vamos a definir el font-size en px, porque eso impide al usuario modificar luego el tamaño de la
@@ -35,6 +33,7 @@ Como queremos que sean 10px hacemos regla de tres simples 100*10/16 = 62.5%
 Ahora el user va a poder zoom in and zoom out no solo el font-size sino tb la página en sí
 - Nota: el viejo Internet expolorer no soporta rems
 */
+
 body {
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
@@ -42,11 +41,10 @@ body {
   /* font-size: 16px; antes de crear el root teníamos este font-size 
   que ahora sacamos para poner las demás unidades en rem*/
   line-height: 1.7;
-  color: #777777;
+  color: rgb(119, 119, 119);
   padding: 3rem;
   /*antes habíamos puesto 30px. Ahora son 3rem que multiplicado por 10px del html es igual a 30px*/
 }
-
 /*
 - font-family, es de google fonts, cuyo link hay que agregar en el código html, head section.
 - font-weight, 400 es igual a normal (default), y 700 igual a bold
@@ -55,13 +53,15 @@ body {
 - Agregamos un padding en el body, lo que hace que todos los elementos de nuestra página ahora
 tengan el mismo, salvo lo reescribamos.
 */
+
 /***************HEADER*****************/
+
 .header {
   height: 95vh;
   background-image: linear-gradient(
       to right bottom,
-      rgba(126, 213, 111, 0.8),
-      rgba(40, 180, 133, 0.8)
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
     ),
     url(../img/hero.jpg);
   background-size: cover;
@@ -69,7 +69,6 @@ tengan el mismo, salvo lo reescribamos.
   clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
   position: relative;
 }
-
 /*
 -El header tiene una altura según el view port - no del 100% sino del 95%, para que siempre
 guarde esa dimensión.
@@ -85,14 +84,12 @@ La página https://bennettfeely.com/clippy/ te calcula cada lado para formar dis
 - En CSS no podemos poner un hexagesimal color y después un opacity, sino rgba. Pero en SASS 
 sí. Entonces ponemos rgba y dentro nuestra variable más el grado de opacity.
 */
+
 .header__logo-box {
   position: absolute;
-  top: 4rem;
-  /*antes pusimos 40px. Ahora es 4 por 10px del html root element igual 40px*/
-  left: 4rem;
-  /*lo mismo*/
+  top: 4rem; /*antes pusimos 40px. Ahora es 4 por 10px del html root element igual 40px*/
+  left: 4rem; /*lo mismo*/
 }
-
 /*es el div que contiene el logo.
 - Acá la position es absolute. Pero si vemos en el header class su position es relative. Esto
 hace un juego entre ambos elementos. Header es el parent del logo-box, y siendo su position
@@ -100,45 +97,45 @@ relative ahora el absolute position del child en en relación a él y no al body
 página mejor explicado  
 https://css-tricks.com/absolute-positioning-inside-relative-positioning/
 */
+
 .header__logo {
   height: 3.5rem;
   /* igual 35px*/
 }
-
 /*
 Sólo hace falta especificar el height y no el width, este lo pone el browser 
 */
+
 .header__text-box {
   position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
-  /*es para alinear el button*/
-}
 
+  text-align: center; /*es para alinear el button*/
+}
 /*
 - Usamos transform:translate porque el positioning top y left lo mide desde los bordes
 del div y no hace que quede centrado, mientras que transform:translate mueve el div desde 
 el mismo, no desde su borde, es así que termina centrándose. Tb hace que sea responsive,
 y se mueva según el tamaño del browser.
 */
+
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
-  backface-visibility: hidden;
-  /*es para que funcione mejor la animación*/
-  margin-bottom: 6rem;
-  /*es para que el button se separe del heading*/
+
+  backface-visibility: hidden; /*es para que funcione mejor la animación*/
+
+  margin-bottom: 6rem; /*es para que el button se separe del heading*/
 }
 
 .heading-primary--main {
   display: block;
-  font-size: 6rem;
-  /* igual a 60px*/
+  font-size: 6rem; /* igual a 60px*/
   font-weight: 400;
-  letter-spacing: 3.5rem;
-  /*igual a 35px*/
+  letter-spacing: 3.5rem; /*igual a 35px*/
+
   animation-name: moveInLeft;
   animation-duration: 1s;
   animation-timing-function: ease-out;
@@ -146,14 +143,12 @@ y se mueva según el tamaño del browser.
 
 .heading-primary--sub {
   display: block;
-  font-size: 2rem;
-  /*igual a 20px*/
+  font-size: 2rem; /*igual a 20px*/
   font-weight: 700;
-  letter-spacing: 1.74rem;
-  /*igual a 17.4px*/
+  letter-spacing: 1.74rem; /*igual a 17.4px*/
+
   animation: moveInRight 1s ease-out;
 }
-
 /*
 -usamos display block para que cada span esté uno debajo del otro, de lo contrario by default
 son un inline element y estarían uno al lado del otro
@@ -163,16 +158,16 @@ para que no sea bold.
 - Aniation property, en el heading-primary-sub usé el shorthand (de animation-name, animation-duration,
 animation-timing-function. 
 */
+
 /********ANIMATIÓN del Título del header*************/
+
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-10rem);
-    /*igual a -100px*/
+    transform: translateX(-10rem); /*igual a -100px*/
   }
   80% {
-    transform: translateX(1rem);
-    /*igual a 10px*/
+    transform: translateX(1rem); /*igual a 10px*/
   }
   100% {
     opacity: 1;
@@ -183,19 +178,16 @@ animation-timing-function.
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(10rem);
-    /*igual a 100px*/
+    transform: translateX(10rem); /*igual a 100px*/
   }
   80% {
-    transform: translateX(-1rem);
-    /*igual a -10px*/
+    transform: translateX(-1rem); /*igual a -10px*/
   }
   100% {
     opacity: 1;
     transform: translateX(0);
   }
 }
-
 /*
 - La animación podemos hacerla con Transition y luego hoover. Pero en este caso vemos otro modo 
 con @keyframe, se le pone un nombre (identifier) y luego se especifica 0% (cuando comienza) 100% (cuando
@@ -211,30 +203,29 @@ animation-iteration-count:nº, por ejemplo si ponemos 3, se repite 3 veces....et
 para evitarlo en .heading-primary usamos backface-visibility:hidden; 
 es un truco no se sabe porqué funciona. 
 */
+
 /***********BUTTON************/
 .btn,
 .btn:link,
 .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
-  padding: 1.5rem 4rem;
-  /*igual a 15px y 40px*/
+  padding: 1.5rem 4rem; /*igual a 15px y 40px*/
   display: inline-block;
-  border-radius: 10rem;
-  /*igual a 100px*/
-  transition: all 0.2s;
-  position: relative;
-  /*esto es para la animación con seudo-element*/
-  font-size: 1.6rem;
-  /*es igual a 16px*/
-}
+  border-radius: 10rem; /*igual a 100px*/
 
+  transition: all 0.2s;
+
+  position: relative; /*esto es para la animación con seudo-element*/
+  font-size: 1.6rem; /*es igual a 16px*/
+}
 /*acá separo los selectors con comas, y tengo que poner primero el simple selector
 y luego los seudo-class
 - Acá vamos a hacer una animación más simple con Transition (en vez de con @keyframe). 
 Transition es el shorthand. "all" significa que queremos animar todas las propiedades de arriba, 
 usamos esto cuando no estamos seguros de cual animar o no queremos escribir todas las propiedades. 
 */
+
 .btn:hover {
   transform: translateY(-0.3rem);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
@@ -251,30 +242,31 @@ usamos esto cuando no estamos seguros de cual animar o no queremos escribir toda
 click sobre el botón)
 - transform:translateY, se moverá de arriba a abajo. Número negativo hace que vaya hacia arriba. 
 */
+
 .btn--white {
   background-color: #fff;
   color: #777;
 }
 
 /*****ANIMACION con seudo-element ::******/
+
 .btn::after {
   content: "";
   display: inline-block;
   height: 100%;
   width: 100%;
-  border-radius: 10rem;
-  /*igual a 100px*/
+  border-radius: 10rem; /*igual a 100px*/
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
+
   transition: all 0.4s;
 }
 
 .btn--white::after {
   background-color: #fff;
 }
-
 /*
 - La idea es crear otro botón igual pero que esté por detrás, por eso usamos este seudo-element
 - Siempre en los seudo-element tenemos que poner "content" aunque despues lo dejemos vacío y el display
@@ -284,20 +276,21 @@ click sobre el botón)
 body, sino el btn, entonces es ahí donde le pondremos positon:relative
 - z-indez negativo es para que este botón se vaya atrás
 */
+
 .btn:hover::after {
   transform: scaleX(1.4) scaleY(1.6);
   opacity: 0;
 }
-
 /*
 Con esto hacemos que cuando hagamos hover aparezca el btn::after que especificamos arriba y de agrande
 en 1.5 veces su tamaño y que se ponga transparente (opacity)*/
+
 @keyframes moveInButton {
   0% {
     opacity: 0;
-    transform: translateY(3rem);
-    /*igual a 30px*/
+    transform: translateY(3rem); /*igual a 30px*/
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);
@@ -309,7 +302,6 @@ en 1.5 veces su tamaño y que se ponga transparente (opacity)*/
   animation-delay: 0.75s;
   animation-fill-mode: backwards;
 }
-
 /*
 Animation-fill-mode hace que se mantenga en opacity:0 y se translate 30px como especificamos en el
 @keyframe recién cuando pase el tiempo del delay*/
