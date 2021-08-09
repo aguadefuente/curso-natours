@@ -238,6 +238,14 @@ es un truco no se sabe porqué funciona.
   &:hover {
     transform: translateY(-0.3rem);
     box-shadow: 0 1rem 2rem rgba($color-black, 0.4);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+    /*
+  Con esto hacemos que cuando hagamos hover aparezca el btn::after que especificamos arriba y de agrande
+  en 1.5 veces su tamaño y que se ponga transparente (opacity)*/
   }
 
   &:active {
@@ -255,6 +263,19 @@ es un truco no se sabe porqué funciona.
   &--white {
     background-color: $color-white;
     color: $color-grey-dark;
+
+    &::after {
+      background-color: $color-white;
+    }
+    /*
+  - La idea es crear otro botón igual pero que esté por detrás, por eso usamos este seudo-element
+  - Siempre en los seudo-element tenemos que poner "content" aunque despues lo dejemos vacío y el display
+  - display inline-block porque así tb es el display del btn.
+  - heigth y width es el 100% del tamaño del btn, que sería como su parent.
+  - Positioning absolute tiene que tener un reference, en nuestro caso no queremos que sea el header ni el
+  body, sino el btn, entonces es ahí donde le pondremos positon:relative
+  - z-indez negativo es para que este botón se vaya atrás
+  */
   }
 
   /*****ANIMACION con seudo-element ::******/
@@ -272,27 +293,6 @@ es un truco no se sabe porqué funciona.
 
     transition: all 0.4s;
   }
-
-  &--white::after {
-    background-color: $color-white;
-  }
-  /*
-- La idea es crear otro botón igual pero que esté por detrás, por eso usamos este seudo-element
-- Siempre en los seudo-element tenemos que poner "content" aunque despues lo dejemos vacío y el display
-- display inline-block porque así tb es el display del btn.
-- heigth y width es el 100% del tamaño del btn, que sería como su parent.
-- Positioning absolute tiene que tener un reference, en nuestro caso no queremos que sea el header ni el
-body, sino el btn, entonces es ahí donde le pondremos positon:relative
-- z-indez negativo es para que este botón se vaya atrás
-*/
-
-  &:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
-  }
-  /*
-Con esto hacemos que cuando hagamos hover aparezca el btn::after que especificamos arriba y de agrande
-en 1.5 veces su tamaño y que se ponga transparente (opacity)*/
 
   &--animated {
     animation: moveInButton 0.5s ease-out;

@@ -193,18 +193,6 @@ es un truco no se sabe porqué funciona.
   */
   /*****ANIMACION con seudo-element ::******/
   /*
-- La idea es crear otro botón igual pero que esté por detrás, por eso usamos este seudo-element
-- Siempre en los seudo-element tenemos que poner "content" aunque despues lo dejemos vacío y el display
-- display inline-block porque así tb es el display del btn.
-- heigth y width es el 100% del tamaño del btn, que sería como su parent.
-- Positioning absolute tiene que tener un reference, en nuestro caso no queremos que sea el header ni el
-body, sino el btn, entonces es ahí donde le pondremos positon:relative
-- z-indez negativo es para que este botón se vaya atrás
-*/
-  /*
-Con esto hacemos que cuando hagamos hover aparezca el btn::after que especificamos arriba y de agrande
-en 1.5 veces su tamaño y que se ponga transparente (opacity)*/
-  /*
 Animation-fill-mode hace que se mantenga en opacity:0 y se translate 30px como especificamos en el
 @keyframe recién cuando pase el tiempo del delay*/ }
   .btn, .btn:link, .btn:visited {
@@ -222,13 +210,30 @@ Animation-fill-mode hace que se mantenga en opacity:0 y se translate 30px como e
     /*es igual a 16px*/ }
   .btn:hover {
     transform: translateY(-0.3rem);
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4); }
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+    /*
+  Con esto hacemos que cuando hagamos hover aparezca el btn::after que especificamos arriba y de agrande
+  en 1.5 veces su tamaño y que se ponga transparente (opacity)*/ }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
   .btn:active {
     transform: translateY(-0.1rem);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4); }
   .btn--white {
     background-color: #fff;
-    color: #777; }
+    color: #777;
+    /*
+  - La idea es crear otro botón igual pero que esté por detrás, por eso usamos este seudo-element
+  - Siempre en los seudo-element tenemos que poner "content" aunque despues lo dejemos vacío y el display
+  - display inline-block porque así tb es el display del btn.
+  - heigth y width es el 100% del tamaño del btn, que sería como su parent.
+  - Positioning absolute tiene que tener un reference, en nuestro caso no queremos que sea el header ni el
+  body, sino el btn, entonces es ahí donde le pondremos positon:relative
+  - z-indez negativo es para que este botón se vaya atrás
+  */ }
+    .btn--white::after {
+      background-color: #fff; }
   .btn::after {
     content: "";
     display: inline-block;
@@ -241,11 +246,6 @@ Animation-fill-mode hace que se mantenga en opacity:0 y se translate 30px como e
     left: 0;
     z-index: -1;
     transition: all 0.4s; }
-  .btn--white::after {
-    background-color: #fff; }
-  .btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0; }
   .btn--animated {
     animation: moveInButton 0.5s ease-out;
     animation-delay: 0.75s;
