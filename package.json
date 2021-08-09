@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "landing page for natours",
   "main": "index.js",
-  "scripts": {
-   "compile:sass": "node-sass sass/main.scss css/style.css"
+  "scripts": { 
+   "compile:sass": "node-sass sass/main.scss css/style.css-m"
   },
   "author": "Laura",
   "license": "ISC",
