@@ -1,0 +1,57 @@
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; antes de crear el root teníamos este font-size 
+    que ahora sacamos para poner las demás unidades en rem*/
+  line-height: 1.7;
+  color: $color-grey-dark;
+  padding: 3rem;
+  /*antes habíamos puesto 30px. Ahora son 3rem que multiplicado por 10px del html es igual a 30px*/
+}
+/*
+  - font-family, es de google fonts, cuyo link hay que agregar en el código html, head section.
+  - font-weight, 400 es igual a normal (default), y 700 igual a bold
+  - line-height, si ponemos un número significa que es lo que se va a multiplicar del font size
+  (se pueden usar px, rem, %...etc)
+  - Agregamos un padding en el body, lo que hace que todos los elementos de nuestra página ahora
+  tengan el mismo, salvo lo reescribamos.
+  */
+
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
+
+  backface-visibility: hidden; /*es para que funcione mejor la animación*/
+
+  margin-bottom: 6rem; /*es para que el button se separe del heading*/
+
+  &--main {
+    display: block;
+    font-size: 6rem; /* igual a 60px*/
+    font-weight: 400;
+    letter-spacing: 3.5rem; /*igual a 35px*/
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+  }
+
+  &--sub {
+    display: block;
+    font-size: 2rem; /*igual a 20px*/
+    font-weight: 700;
+    letter-spacing: 1.74rem; /*igual a 17.4px*/
+
+    animation: moveInRight 1s ease-out;
+  }
+
+  /*
+    -usamos display block para que cada span esté uno debajo del otro, de lo contrario by default
+    son un inline element y estarían uno al lado del otro
+    -el font-weight lo especificamos porque por defecto h1 tiene bold, y se sobreescribe al que
+    ya habíamos puesto en el body por estar el h1 luego del body. Así que volvemos a poner 400px
+    para que no sea bold.
+    - Aniation property, en el heading-primary-sub usé el shorthand (de animation-name, animation-duration,
+    animation-timing-function. 
+    */
+}

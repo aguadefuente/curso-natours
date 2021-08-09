@@ -1,0 +1,35 @@
+/***********BASIC RESET******************/
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  /* box-sizing: border-box; esto lo vamos a colocar en el body para aprovechar el inherit keyword 
+  en nuestra página web y es una mejor práctica poner acá inherit y en el body border-box*/
+}
+/*
+- Arriba lo que hicimos fue usar el "univesal selector" para resetear los margenes y padding
+que por defecto tendríamos según los browsers. Es un basic reset. Agregamos tb pseudo-classes.
+- Box sizing es útil a la hora de calcular todo lo que es el tamaña de los elementos y querer
+agregarle paddings y margins...etc.
+*/
+
+html {
+  font-size: 62.5%;
+}
+/* es un base element porque define lo que un rem debe ser - 
+por eso no lo ponemos en la carpeta de typography
+- root element. Así todas nuestras unidades rem hacen referencia a este root y se multiplicarían por 10
+- No vamos a definir el font-size en px, porque eso impide al usuario modificar luego el tamaño de la
+fuente con el browser. Lo que queremos es definirlo en porcentaje.
+Si ponemos font-size 100% equivaldría a 16px, porque ese es el default value de los font-size.
+Como queremos que sean 10px hacemos regla de tres simples 100*10/16 = 62.5%
+Ahora el user va a poder zoom in and zoom out no solo el font-size sino tb la página en sí
+- Nota: el viejo Internet expolorer no soporta rems
+*/
+
+body {
+  box-sizing: border-box;
+}

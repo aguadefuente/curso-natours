@@ -1,0 +1,94 @@
+/***********BUTTON************/
+
+.btn {
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem; /*igual a 15px y 40px*/
+    display: inline-block;
+    border-radius: 10rem; /*igual a 100px*/
+
+    transition: all 0.2s;
+
+    position: relative; /*esto es para la animación con seudo-element*/
+    font-size: 1.6rem; /*es igual a 16px*/
+  }
+
+  /*acá separo los selectors con comas, y tengo que poner primero el simple selector
+    y luego los seudo-class
+    - Acá vamos a hacer una animación más simple con Transition (en vez de con @keyframe). 
+    Transition es el shorthand. "all" significa que queremos animar todas las propiedades de arriba, 
+    usamos esto cuando no estamos seguros de cual animar o no queremos escribir todas las propiedades. 
+    */
+
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.4);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+    /*
+    Con esto hacemos que cuando hagamos hover aparezca el btn::after que especificamos arriba y de agrande
+    en 1.5 veces su tamaño y que se ponga transparente (opacity)*/
+  }
+
+  &:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.4);
+  }
+
+  /*
+    - btn con seudo-class :link (es para darle estilo a los unvisited links) y :visited.
+    - btn con seudo-class :hover (cuando nos posicionamos encima con el mouse), :active (cuando hagamos
+    click sobre el botón)
+    - transform:translateY, se moverá de arriba a abajo. Número negativo hace que vaya hacia arriba. 
+    */
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+      background-color: $color-white;
+    }
+    /*
+    - La idea es crear otro botón igual pero que esté por detrás, por eso usamos este seudo-element
+    - Siempre en los seudo-element tenemos que poner "content" aunque despues lo dejemos vacío y el display
+    - display inline-block porque así tb es el display del btn.
+    - heigth y width es el 100% del tamaño del btn, que sería como su parent.
+    - Positioning absolute tiene que tener un reference, en nuestro caso no queremos que sea el header ni el
+    body, sino el btn, entonces es ahí donde le pondremos positon:relative
+    - z-indez negativo es para que este botón se vaya atrás
+    */
+  }
+
+  /*****ANIMACION con seudo-element ::******/
+
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem; /*igual a 100px*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    transition: all 0.4s;
+  }
+
+  &--animated {
+    animation: moveInButton 0.5s ease-out;
+    animation-delay: 0.75s;
+    animation-fill-mode: backwards;
+  }
+
+  /*
+  Animation-fill-mode hace que se mantenga en opacity:0 y se translate 30px como especificamos en el
+  @keyframe recién cuando pase el tiempo del delay*/
+}
