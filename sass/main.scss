@@ -133,36 +133,37 @@ sí. Entonces ponemos rgba y dentro nuestra variable más el grado de opacity.
   backface-visibility: hidden; /*es para que funcione mejor la animación*/
 
   margin-bottom: 6rem; /*es para que el button se separe del heading*/
+
+  &--main {
+    display: block;
+    font-size: 6rem; /* igual a 60px*/
+    font-weight: 400;
+    letter-spacing: 3.5rem; /*igual a 35px*/
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+  }
+
+  &--sub {
+    display: block;
+    font-size: 2rem; /*igual a 20px*/
+    font-weight: 700;
+    letter-spacing: 1.74rem; /*igual a 17.4px*/
+
+    animation: moveInRight 1s ease-out;
+  }
+
+  /*
+  -usamos display block para que cada span esté uno debajo del otro, de lo contrario by default
+  son un inline element y estarían uno al lado del otro
+  -el font-weight lo especificamos porque por defecto h1 tiene bold, y se sobreescribe al que
+  ya habíamos puesto en el body por estar el h1 luego del body. Así que volvemos a poner 400px
+  para que no sea bold.
+  - Aniation property, en el heading-primary-sub usé el shorthand (de animation-name, animation-duration,
+  animation-timing-function. 
+  */
 }
-
-.heading-primary--main {
-  display: block;
-  font-size: 6rem; /* igual a 60px*/
-  font-weight: 400;
-  letter-spacing: 3.5rem; /*igual a 35px*/
-
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-}
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem; /*igual a 20px*/
-  font-weight: 700;
-  letter-spacing: 1.74rem; /*igual a 17.4px*/
-
-  animation: moveInRight 1s ease-out;
-}
-/*
--usamos display block para que cada span esté uno debajo del otro, de lo contrario by default
-son un inline element y estarían uno al lado del otro
--el font-weight lo especificamos porque por defecto h1 tiene bold, y se sobreescribe al que
-ya habíamos puesto en el body por estar el h1 luego del body. Así que volvemos a poner 400px
-para que no sea bold.
-- Aniation property, en el heading-primary-sub usé el shorthand (de animation-name, animation-duration,
-animation-timing-function. 
-*/
 
 /********ANIMATIÓN del Título del header*************/
 
