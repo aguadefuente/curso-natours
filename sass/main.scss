@@ -72,8 +72,8 @@ tengan el mismo, salvo lo reescribamos.
   background-position: top;
   clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
   position: relative;
-}
-/*
+
+  /*
 -El header tiene una altura según el view port - no del 100% sino del 95%, para que siempre
 guarde esa dimensión.
 -Tiene una background image, y le ponemos antes de la url el linear gradient para que tenga
@@ -89,41 +89,42 @@ La página https://bennettfeely.com/clippy/ te calcula cada lado para formar dis
 sí. Entonces ponemos rgba y dentro nuestra variable más el grado de opacity.
 */
 
-.header__logo-box {
-  position: absolute;
-  top: 4rem; /*antes pusimos 40px. Ahora es 4 por 10px del html root element igual 40px*/
-  left: 4rem; /*lo mismo*/
-}
-/*es el div que contiene el logo.
-- Acá la position es absolute. Pero si vemos en el header class su position es relative. Esto
-hace un juego entre ambos elementos. Header es el parent del logo-box, y siendo su position
-relative ahora el absolute position del child en en relación a él y no al body. Ver esta
-página mejor explicado  
-https://css-tricks.com/absolute-positioning-inside-relative-positioning/
-*/
+  &__logo-box {
+    position: absolute;
+    top: 4rem; /*antes pusimos 40px. Ahora es 4 por 10px del html root element igual 40px*/
+    left: 4rem; /*lo mismo*/
+  }
+  /*es el div que contiene el logo.
+  - Acá la position es absolute. Pero si vemos en el header class su position es relative. Esto
+  hace un juego entre ambos elementos. Header es el parent del logo-box, y siendo su position
+  relative ahora el absolute position del child en en relación a él y no al body. Ver esta
+  página mejor explicado  
+  https://css-tricks.com/absolute-positioning-inside-relative-positioning/
+  */
 
-.header__logo {
-  height: 3.5rem;
-  /* igual 35px*/
-}
-/*
-Sólo hace falta especificar el height y no el width, este lo pone el browser 
-*/
+  &__logo {
+    height: 3.5rem;
+    /* igual 35px*/
+  }
+  /*
+  Sólo hace falta especificar el height y no el width, este lo pone el browser 
+  */
 
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
-  text-align: center; /*es para alinear el button*/
+    text-align: center; /*es para alinear el button*/
+  }
+  /*
+  - Usamos transform:translate porque el positioning top y left lo mide desde los bordes
+  del div y no hace que quede centrado, mientras que transform:translate mueve el div desde 
+  el mismo, no desde su borde, es así que termina centrándose. Tb hace que sea responsive,
+  y se mueva según el tamaño del browser.
+  */
 }
-/*
-- Usamos transform:translate porque el positioning top y left lo mide desde los bordes
-del div y no hace que quede centrado, mientras que transform:translate mueve el div desde 
-el mismo, no desde su borde, es así que termina centrándose. Tb hace que sea responsive,
-y se mueva según el tamaño del browser.
-*/
 
 .heading-primary {
   color: $color-white;
