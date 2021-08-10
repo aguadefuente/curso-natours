@@ -4,25 +4,33 @@
   0% {
     opacity: 0;
     transform: translateX(-10rem);
-    /*igual a -100px*/ }
+    /*igual a -100px*/
+  }
   80% {
     transform: translateX(1rem);
-    /*igual a 10px*/ }
+    /*igual a 10px*/
+  }
   100% {
     opacity: 1;
-    transform: translateX(0); } }
+    transform: translateX(0);
+  }
+}
 
 @keyframes moveInRight {
   0% {
     opacity: 0;
     transform: translateX(10rem);
-    /*igual a 100px*/ }
+    /*igual a 100px*/
+  }
   80% {
     transform: translateX(-1rem);
-    /*igual a -10px*/ }
+    /*igual a -10px*/
+  }
   100% {
     opacity: 1;
-    transform: translateX(0); } }
+    transform: translateX(0);
+  }
+}
 
 /*
   - La animación podemos hacerla con Transition y luego hoover. Pero en este caso vemos otro modo 
@@ -44,10 +52,13 @@
   0% {
     opacity: 0;
     transform: translateY(3rem);
-    /*igual a 30px*/ }
+    /*igual a 30px*/
+  }
   100% {
     opacity: 1;
-    transform: translateX(0); } }
+    transform: translateX(0);
+  }
+}
 
 /***********BASIC RESET******************/
 *,
@@ -57,7 +68,8 @@
   padding: 0;
   box-sizing: inherit;
   /* box-sizing: border-box; esto lo vamos a colocar en el body para aprovechar el inherit keyword 
-  en nuestra página web y es una mejor práctica poner acá inherit y en el body border-box*/ }
+  en nuestra página web y es una mejor práctica poner acá inherit y en el body border-box*/
+}
 
 /*
 - Arriba lo que hicimos fue usar el "univesal selector" para resetear los margenes y padding
@@ -66,7 +78,8 @@ que por defecto tendríamos según los browsers. Es un basic reset. Agregamos tb
 agregarle paddings y margins...etc.
 */
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+}
 
 /* es un base element porque define lo que un rem debe ser - 
 por eso no lo ponemos en la carpeta de typography
@@ -79,7 +92,8 @@ Ahora el user va a poder zoom in and zoom out no solo el font-size sino tb la p�
 - Nota: el viejo Internet expolorer no soporta rems
 */
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 body {
   font-family: "Lato", sans-serif;
@@ -89,7 +103,8 @@ body {
   line-height: 1.7;
   color: #777;
   padding: 3rem;
-  /*antes habíamos puesto 30px. Ahora son 3rem que multiplicado por 10px del html es igual a 30px*/ }
+  /*antes habíamos puesto 30px. Ahora son 3rem que multiplicado por 10px del html es igual a 30px*/
+}
 
 /*
   - font-family, es de google fonts, cuyo link hay que agregar en el código html, head section.
@@ -114,25 +129,28 @@ body {
     para que no sea bold.
     - Aniation property, en el heading-primary-sub usé el shorthand (de animation-name, animation-duration,
     animation-timing-function. 
-    */ }
-  .heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    /* igual a 60px*/
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    /*igual a 35px*/
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out; }
-  .heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    /*igual a 20px*/
-    font-weight: 700;
-    letter-spacing: 1.74rem;
-    /*igual a 17.4px*/
-    animation: moveInRight 1s ease-out; }
+    */
+}
+.heading-primary--main {
+  display: block;
+  font-size: 6rem;
+  /* igual a 60px*/
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+  /*igual a 35px*/
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  /*igual a 20px*/
+  font-weight: 700;
+  letter-spacing: 1.74rem;
+  /*igual a 17.4px*/
+  animation: moveInRight 1s ease-out;
+}
 
 /***********BUTTON************/
 .btn {
@@ -151,36 +169,43 @@ body {
   /*****ANIMACION con seudo-element ::******/
   /*
   Animation-fill-mode hace que se mantenga en opacity:0 y se translate 30px como especificamos en el
-  @keyframe recién cuando pase el tiempo del delay*/ }
-  .btn, .btn:link, .btn:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    /*igual a 15px y 40px*/
-    display: inline-block;
-    border-radius: 10rem;
-    /*igual a 100px*/
-    transition: all 0.2s;
-    position: relative;
-    /*esto es para la animación con seudo-element*/
-    font-size: 1.6rem;
-    /*es igual a 16px*/ }
-  .btn:hover {
-    transform: translateY(-0.3rem);
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
-    /*
+  @keyframe recién cuando pase el tiempo del delay*/
+}
+.btn,
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  /*igual a 15px y 40px*/
+  display: inline-block;
+  border-radius: 10rem;
+  /*igual a 100px*/
+  transition: all 0.2s;
+  position: relative;
+  /*esto es para la animación con seudo-element*/
+  font-size: 1.6rem;
+  /*es igual a 16px*/
+}
+.btn:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+  /*
     Con esto hacemos que cuando hagamos hover aparezca el btn::after que especificamos arriba y de agrande
-    en 1.5 veces su tamaño y que se ponga transparente (opacity)*/ }
-    .btn:hover::after {
-      transform: scaleX(1.4) scaleY(1.6);
-      opacity: 0; }
-  .btn:active {
-    transform: translateY(-0.1rem);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4); }
-  .btn--white {
-    background-color: #fff;
-    color: #777;
-    /*
+    en 1.5 veces su tamaño y que se ponga transparente (opacity)*/
+}
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+.btn:active {
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
+}
+.btn--white {
+  background-color: #fff;
+  color: #777;
+  /*
     - La idea es crear otro botón igual pero que esté por detrás, por eso usamos este seudo-element
     - Siempre en los seudo-element tenemos que poner "content" aunque despues lo dejemos vacío y el display
     - display inline-block porque así tb es el display del btn.
@@ -188,30 +213,39 @@ body {
     - Positioning absolute tiene que tener un reference, en nuestro caso no queremos que sea el header ni el
     body, sino el btn, entonces es ahí donde le pondremos positon:relative
     - z-indez negativo es para que este botón se vaya atrás
-    */ }
-    .btn--white::after {
-      background-color: #fff; }
-  .btn::after {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    /*igual a 100px*/
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all 0.4s; }
-  .btn--animated {
-    animation: moveInButton 0.5s ease-out;
-    animation-delay: 0.75s;
-    animation-fill-mode: backwards; }
+    */
+}
+.btn--white::after {
+  background-color: #fff;
+}
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  /*igual a 100px*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+.btn--animated {
+  animation: moveInButton 0.5s ease-out;
+  animation-delay: 0.75s;
+  animation-fill-mode: backwards;
+}
 
 /***************HEADER*****************/
 .header {
   height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 133, 0.8)
+    ),
+    url(../img/hero.jpg);
   background-size: cover;
   background-position: top;
   clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
@@ -246,20 +280,24 @@ body {
     del div y no hace que quede centrado, mientras que transform:translate mueve el div desde 
     el mismo, no desde su borde, es así que termina centrándose. Tb hace que sea responsive,
     y se mueva según el tamaño del browser.
-    */ }
-  .header__logo-box {
-    position: absolute;
-    top: 4rem;
-    /*antes pusimos 40px. Ahora es 4 por 10px del html root element igual 40px*/
-    left: 4rem;
-    /*lo mismo*/ }
-  .header__logo {
-    height: 3.5rem;
-    /* igual 35px*/ }
-  .header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    /*es para alinear el button*/ }
+    */
+}
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  /*antes pusimos 40px. Ahora es 4 por 10px del html root element igual 40px*/
+  left: 4rem;
+  /*lo mismo*/
+}
+.header__logo {
+  height: 3.5rem;
+  /* igual 35px*/
+}
+.header__text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  /*es para alinear el button*/
+}
