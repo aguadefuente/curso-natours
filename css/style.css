@@ -68,8 +68,9 @@ agregarle paddings y margins...etc.
 html {
   font-size: 62.5%; }
 
-/*
-root element. Así todas nuestras unidades rem hacen referencia a este root y se multiplicarían por 10
+/* es un base element porque define lo que un rem debe ser - 
+por eso no lo ponemos en la carpeta de typography
+- root element. Así todas nuestras unidades rem hacen referencia a este root y se multiplicarían por 10
 - No vamos a definir el font-size en px, porque eso impide al usuario modificar luego el tamaño de la
 fuente con el browser. Lo que queremos es definirlo en porcentaje.
 Si ponemos font-size 100% equivaldría a 16px, porque ese es el default value de los font-size.
