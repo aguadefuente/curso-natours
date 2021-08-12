@@ -61,7 +61,9 @@ body {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 2px;
-  display: inline-block;
+
+  /*GRADIENTE PARA LAS LETRAS. Se le pone un background-image con gradient*/
+
   background-image: linear-gradient(
     to right,
     $color-primary-light,
@@ -69,12 +71,36 @@ body {
   );
   background-clip: text;
   -webkit-background-clip: text;
+  /*Esto hace que el background-image gradient solo se pegue al texto.
+  Hay que poner dos veces el background-clip para que el navegador lo agarre. 
+  */
   color: transparent;
+  /*el color del texto lo ponemos en transparente para solo ver el background-image gradient.
+  Si no lo ponemos transparente veremos el texto en su color gris, pues se sienta sobre el 
+  background-image con gradient*/
 
-  transition: all 0.2s;
+  display: inline-block;
+  /*esto es para que el color solo ocupe el espacio de la tipografía. Porque el h2 sería un block
+  element y ocuparía todo el ancho de la pantalla, y el gradient se vería en todo el ancho*/
+
+  transition: all 0.2s; //la animación cuando hacemos hover. "all" es que se aplique a todas las properties
 
   &:hover {
-    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    transform: skewY(2deg) skewX(15deg) scale(1.1); //ponemos cada efecto separados con espacio
     text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.315);
+  }
+}
+
+.heading-tertiary {
+  font-size: $default-font-size;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: $default-font-size;
+
+  &:not(:last-child) {
+    margin-bottom: 3rem;
   }
 }

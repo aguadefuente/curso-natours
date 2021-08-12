@@ -21,6 +21,9 @@
 </head>
 
 <body>
+
+    <!--HEADER-->
+
     <header class="header">
         <!--standalone block component-->
         <div class="header__logo-box">
@@ -51,19 +54,46 @@ Los H1 son importantes para el SEO, ya luego usar h2 y siguientes-->
         </div>
     </header>
 
+    <!--MAIN SECTION-->
+
     <main>
-        <!--main es un html tag que le va a decir al SEO y a los reader que es la sección principal de
-        nuestra página -->
+        <!--main es un html tag que le va a decir al SEO y a los screewn-reader que es la sección principal 
+        de nuestra página -->
         <section class="section-about">
-            <div class="u-center-text u-margin-bottom-8">
+            <div class="u-center-text u-margin-bottom-big">
+                <!--estas clases son para establecer "utilities" para que el h2 dentro del div por ejemplo
+                esté centrado dentro suyo, o para establecer margins. Ver carpeta "utilities".
+                Nos permite luego reutilizarla en otros momentos-->
                 <h2 class="heading-secondary">
                     Exciting tours for adventurous people
                 </h2>
+
             </div>
 
+            <!--grid con float (ver explicacion en mi codepen.io)-->
             <div class="row">
                 <div class="col-1-of-2">
-                    text content
+                    <h3 class="heading-tertiary u-margin-bottom-small">
+                        Your are going to fall in love with nature
+                    </h3>
+                    <p class="paragraph">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis maiores
+                        quia molestias quaerat sunt,
+                    </p>
+
+                    <h3 class="heading-tertiary u-margin-bottom-small">
+                        Live adventure like you never have before
+                    </h3>
+                    <p class="paragraph">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis maiores
+                        quia molestias quaerat sunt,
+                    </p>
+
+                    <a href="#" class="btn-text">
+                        Learn more &rarr;
+                        <!--ese rarr es un codigo para que salga la flechita-->
+                    </a>
+
                 </div>
                 <div class="col-1-of-2">
                     image composition

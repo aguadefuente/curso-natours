@@ -143,20 +143,45 @@ body {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 2px;
-  display: inline-block;
+  /*GRADIENTE PARA LAS LETRAS. Se le pone un background-image con gradient*/
   background-image: linear-gradient(to right, #7ed56f, #28b485);
   background-clip: text;
   -webkit-background-clip: text;
+  /*Esto hace que el background-image gradient solo se pegue al texto.
+  Hay que poner dos veces el background-clip para que el navegador lo agarre. 
+  */
   color: transparent;
+  /*el color del texto lo ponemos en transparente para solo ver el background-image gradient.
+  Si no lo ponemos transparente veremos el texto en su color gris, pues se sienta sobre el 
+  background-image con gradient*/
+  display: inline-block;
+  /*esto es para que el color solo ocupe el espacio de la tipografía. Porque el h2 sería un block
+  element y ocuparía todo el ancho de la pantalla, y el gradient se vería en todo el ancho*/
   transition: all 0.2s; }
   .heading-secondary:hover {
     transform: skewY(2deg) skewX(15deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.315); }
 
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
 .u-center-text {
   text-align: center; }
 
-.u-margin-bottom-8 {
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem; }
+
+.u-margin-bottom-big {
   margin-bottom: 8rem; }
 
 /***********BUTTON************/
@@ -233,9 +258,28 @@ body {
     animation-delay: 0.75s;
     animation-fill-mode: backwards; }
 
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #55c57a;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #55c57a;
+  padding: 3px;
+  transition: all 0.2s; }
+
+.btn-text:hover {
+  background-color: #55c57a;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px); }
+
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
+  transform: translateY(0); }
+
 .row {
   max-width: 114rem;
-  margin: 0 auto; }
+  margin: 0 5rem; }
   .row:not(:last-child) {
     margin-bottom: 8rem; }
   .row::after {
@@ -244,10 +288,10 @@ body {
     clear: both; }
   .row [class^="col-"] {
     float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
   .row .col-1-of-2 {
     width: calc((100% - 6rem) / 2); }
-    .row .col-1-of-2:not(:last-child) {
-      margin-right: 6rem; }
   .row .col-1-of-3 {
     width: calc((100% - 2 * 6rem) / 3); }
   .row .col-1-of-4 {
@@ -319,3 +363,9 @@ body {
   background-color: #f7f7f7;
   padding: 25rem 0;
   margin-top: -20vh; }
+
+/*ponemos 25rem porque si vemos el header tiene de height 95vh y el clip-path del
+  polígono llega hasta 75vh. La direfencia es 20. 
+  Por eso vamos a poner un padding de 25rem para que el titulo quede más abajo que esos 20, y luego
+  un margin en negativo -20 para que el backgroun-color vaya hacia arriba y cubra toda la sección
+  Ver en inspeccionar de chrome para entenderlo mejor!!*/

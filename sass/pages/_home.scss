@@ -3,3 +3,9 @@
   padding: 25rem 0;
   margin-top: -20vh;
 }
+
+/*ponemos 25rem porque si vemos el header tiene de height 95vh y el clip-path del
+  polígono llega hasta 75vh. La direfencia es 20. 
+  Por eso vamos a poner un padding de 25rem para que el titulo quede más abajo que esos 20, y luego
+  un margin en negativo -20 para que el backgroun-color vaya hacia arriba y cubra toda la sección
+  Ver en inspeccionar de chrome para entenderlo mejor!!*/

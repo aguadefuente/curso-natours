@@ -13,7 +13,7 @@
     transition: all 0.2s;
 
     position: relative; /*esto es para la animación con seudo-element*/
-    font-size: 1.6rem; /*es igual a 16px*/
+    font-size: $default-font-size; /*es igual a 16px*/
   }
 
   /*acá separo los selectors con comas, y tengo que poner primero el simple selector
@@ -91,4 +91,28 @@
   /*
   Animation-fill-mode hace que se mantenga en opacity:0 y se translate 30px como especificamos en el
   @keyframe recién cuando pase el tiempo del delay*/
+}
+
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+
+    transition: all 0.2s;
+  }
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.4);
+    transform: translateY(-2px);
+  }
+  &:active {
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.4);
+    transform: translateY(0);
+  }
 }
