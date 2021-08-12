@@ -1,1 +1,12 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
 
+/*Acá creamos un mixin que será un clearfix, dado que al estar los div con float hace que colapse el 
+heigth a 0px y se encimen unos a otros. Con este clearfix por medio del pseudo-element ::after creamos 
+un elemento por detrás que mantiene la altura.
+Luego agregamos este mixin con @include*/
