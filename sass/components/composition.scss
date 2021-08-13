@@ -33,4 +33,11 @@
       z-index: 20;
     }
   }
+
+  &:hover &_photo:not(:hover) {
+    transform: scale(0.95) translateY(-0.5rem);
+  }
+  /*esto es para que cuando hacemos hover sobre una foto las otras se achiquen
+sería igual a - composition:hover composition_photo:not(:hover) - es decir que cuando hagamos hover
+en el composition que seleccione las composition_photos menos sobre la que estoy haciendo hover*/
 }

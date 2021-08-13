@@ -9,3 +9,14 @@
   Por eso vamos a poner un padding de 25rem para que el titulo quede más abajo que esos 20, y luego
   un margin en negativo -20 para que el backgroun-color vaya hacia arriba y cubra toda la sección
   Ver en inspeccionar de chrome para entenderlo mejor!!*/
+
+.feature-section {
+  padding: 20rem 0;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/nat-4.jpg);
+  background-size: cover;
+}

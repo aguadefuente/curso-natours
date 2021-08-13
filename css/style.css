@@ -277,8 +277,14 @@ body {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
   transform: translateY(0); }
 
+.feature-box_icon {
+  background-color: rgba(255, 255, 255, 0.8); }
+
 .composition {
-  position: relative; }
+  position: relative;
+  /*esto es para que cuando hacemos hover sobre una foto las otras se achiquen
+sería igual a - composition:hover composition_photo:not(:hover) - es decir que cuando hagamos hover
+en el composition que seleccione las composition_photos menos sobre la que estoy haciendo hover*/ }
   .composition_photo {
     width: 55%;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
@@ -301,10 +307,12 @@ body {
       transform: scale(1.05);
       box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
       z-index: 20; }
+  .composition:hover .composition_photo:not(:hover) {
+    transform: scale(0.95) translateY(-0.5rem); }
 
 .row {
   max-width: 114rem;
-  margin: 0 8rem; }
+  margin: 0 6rem; }
   .row:not(:last-child) {
     margin-bottom: 8rem; }
   .row::after {
@@ -394,3 +402,7 @@ body {
   Por eso vamos a poner un padding de 25rem para que el titulo quede más abajo que esos 20, y luego
   un margin en negativo -20 para que el backgroun-color vaya hacia arriba y cubra toda la sección
   Ver en inspeccionar de chrome para entenderlo mejor!!*/
+.feature-section {
+  padding: 20rem 0;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/nat-4.jpg);
+  background-size: cover; }

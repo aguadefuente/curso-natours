@@ -8,8 +8,15 @@
     <!--Tipografía, en este caso de google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
 
+    <!--Fonts: acá usamos linea.io, te bajas el basic package y luego copias y pegás la carpeta font y 
+style.css (que renombramos como icon-font.css, para que no se confunda con nuestra carpeta de css 
+style-sheet) dentro de la carpeta css de nuestro proyecto.
+Aquellas estaban dentro de la carpeta de iconfont. Luego agregamos el link acá. Ya podemos usar nuestros
+fonts en la página. En la carpeta fonts vemos cuatro distnintos formatos, tenemos que ponerlos todos
+para que distintos browsers puedan reconocerlos, ver como están inclidos en icon-font.css-->
+    <link rel="stylesheet" href="css/icon-fonts.css">
+
     <!--Stylesheets-->
-    <!--link rel="stylesheet" href="css/icon-font.css" esto para después-->
     <link rel="stylesheet" href="css/style.css">
 
     <!--Favicom-->
@@ -104,6 +111,28 @@ Los H1 son importantes para el SEO, ya luego usar h2 y siguientes-->
                 </div>
             </div>
 
+        </section>
+
+        <!--FEATURE SECTION-->
+
+        <section class="feature-section">
+
+            <row>
+                <div class=" row col-1-of-4">
+                    <div class="feature-box">
+                        <i class="feature-box_icon icon-basic-world"></i>
+                        <!--usamos i pero se puede usar cq otro tag. Así agregamos
+            el icon. Dentro de class colocamos su nombre según el paquete que nos bajamos. El primer
+            nombre es el de la clase, el segundo nombre es el del ícono para agregarlo-->
+                        <h3 class="heading-tertiary">
+                            Explore de world
+                        </h3>
+                        <p class="feature-box_text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                    </div>
+                </div>
+            </row>
         </section>
 
     </main>
