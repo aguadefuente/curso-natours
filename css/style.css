@@ -283,7 +283,7 @@ body {
   padding: 2.5rem;
   text-align: center;
   border-radius: 3px;
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1.5rem 4rem black;
   transition: transform 0.3s; }
   .feature-box_icon {
     font-size: 6rem;
