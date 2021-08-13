@@ -277,8 +277,32 @@ body {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
   transform: translateY(0); }
 
-.feature-box_icon {
-  background-color: rgba(255, 255, 255, 0.8); }
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s; }
+  .feature-box_icon {
+    font-size: 6rem;
+    margin-bottom: 0.5rem;
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    background-clip: text;
+    -webkit-background-clip: text;
+    /*Esto hace que el background-image gradient solo se pegue al texto.
+      Hay que poner dos veces el background-clip para que el navegador lo agarre. 
+      */
+    color: transparent;
+    /*el color del texto lo ponemos en transparente para solo ver el background-image gradient.
+      Si no lo ponemos transparente veremos el texto en su color gris, pues se sienta sobre el 
+      background-image con gradient*/
+    display: inline-block;
+    /*esto es para que el color solo ocupe el espacio de la tipografía. Porque el h2 sería un block
+      element y ocuparía todo el ancho de la pantalla, y el gradient se vería en todo el ancho*/ }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.03); }
 
 .composition {
   position: relative;
