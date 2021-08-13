@@ -19,4 +19,14 @@
     ),
     url(../img/nat-4.jpg);
   background-size: cover;
+  margin-top: -10rem; //en negativo para que se mueva hacia arriba
+
+  transform: skewY(-7deg);
+
+  & > * {
+    transform: skewY(7deg);
+  } //esto sería .feature-section > * : es decir todos los direct child de feature-section
 }
+
+/*explicación de los transform: con el skewY negativo distorcionamos hacia arriba el background. Luego
+para que nuestras tarjetas no se distorcionen ponemos transform positito, así se enderezan.*/
