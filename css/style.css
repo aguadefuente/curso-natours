@@ -284,13 +284,11 @@ body {
   es más exagerado. Hay que ir probando hasta ver que se vea lindo. Acá con 150rem se ve bien, menos
   ya se ve feo*/
   position: relative;
-  height: 40rem;
+  height: 51rem;
   /*sería igual a .card:hover .card_side--front {}, lo que implica que cuando hagamos hover sobre la card 
   entonces se transforme el card_side--front*/ }
   .card_side {
-    color: #fff;
-    font-size: 2rem;
-    height: 40rem;
+    height: 51rem;
     transition: all 0.8s ease;
     position: absolute;
     top: 0;
@@ -298,6 +296,7 @@ body {
     width: 100%;
     backface-visibility: hidden;
     border-radius: 3px;
+    overflow: hidden;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
     .card_side--front {
       background-color: #fff; }
@@ -309,6 +308,46 @@ body {
     transform: rotateY(-180deg); }
   .card:hover .card_side--back {
     transform: rotateY(0deg); }
+  .card_picture {
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen;
+    /*esto va a compaginar las dos imágenes, gradient y jpg. 
+    No funciona en todos los browsers*/
+    -webkir-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+    .card_picture--1 {
+      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../img/nat-5.jpg); }
+  .card_heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-align: right;
+    text-transform: uppercase;
+    color: #fff;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 75%; }
+  .card_heading--span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    /*esta propiedad aplica igual padding a todas las cajas. Ver en inspeccionar que si lo sacamos el
+    heading se desalinea*/ }
+    .card_heading--span-1 {
+      background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); }
+  .card_details {
+    padding: 3rem; }
+    .card_details ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto; }
+      .card_details ul li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem; }
+        .card_details ul li:not(:last-child) {
+          border-bottom: 1px solid #eee; }
 
 .feature-box {
   background-color: rgba(255, 255, 255, 0.8);
@@ -399,6 +438,7 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
   background-size: cover;
   background-position: top;
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
   clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
   position: relative;
   /*

@@ -1,4 +1,6 @@
 .card {
+  //FUNCTIONALITY
+
   perspective: 150rem;
   -moz-perspective: 150rem; //para que funcione en firefox browser
   /*hace que la tarjeta tenga un efecto de rotate más lindo. Si ponemos pocos rem veremos que el efecto
@@ -6,12 +8,10 @@
   ya se ve feo*/
 
   position: relative; //relative en el parent
-  height: 40rem; //ponemos igual height que el child &_side, sino las alturas colapsan y se enciman
+  height: 51rem; //ponemos igual height que el child &_side, sino las alturas colapsan y se enciman
 
   &_side {
-    color: #fff;
-    font-size: 2rem;
-    height: 40rem;
+    height: 51rem;
     transition: all 0.8s ease;
 
     position: absolute; //absolute en el child. Es para que los dos lados estén una sobre la otra
@@ -21,6 +21,7 @@
     backface-visibility: hidden; //para no ver la cara de atrás de la tarjeta
 
     border-radius: 3px;
+    overflow: hidden; //para que se sigua viendo el border-radius aún aplicando el card_picture
     box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
 
     &--front {
@@ -50,5 +51,81 @@
 
   &:hover &_side--back {
     transform: rotateY(0deg);
+  }
+
+  //FRONT-SIDE STYLING
+
+  &_picture {
+    background-size: cover; //lo ponemos acá para que se aplique a todas las cards
+    height: 23rem;
+
+    background-blend-mode: screen; /*esto va a compaginar las dos imágenes, gradient y jpg. 
+    No funciona en todos los browsers*/
+
+    -webkir-clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 85%,
+      0 100%
+    ); //para que fxne en todos los browsers
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    &--1 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        ),
+        url(../img/nat-5.jpg);
+    } //esto mezcla dos imágenes, el gradiente y la .jpg
+  }
+
+  &_heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-align: right;
+    text-transform: uppercase;
+    color: $color-white;
+
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 75%;
+  }
+
+  &_heading--span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone; //para que funcione en chrome
+    box-decoration-break: clone;
+    /*esta propiedad aplica igual padding a todas las cajas. Ver en inspeccionar que si lo sacamos el
+    heading se desalinea*/
+
+    &-1 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-light, 0.85),
+        rgba($color-secondary-dark, 0.85)
+      );
+    }
+  }
+
+  &_details {
+    padding: 3rem;
+
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto; //la forma sencilla de centrar un block element dentro de otro block element
+
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-grey-light-2;
+        }
+      }
+    }
   }
 }
