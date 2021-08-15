@@ -277,6 +277,39 @@ body {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
   transform: translateY(0); }
 
+.card {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  /*hace que la tarjeta tenga un efecto de rotate más lindo. Si ponemos pocos rem veremos que el efecto
+  es más exagerado. Hay que ir probando hasta ver que se vea lindo. Acá con 150rem se ve bien, menos
+  ya se ve feo*/
+  position: relative;
+  height: 40rem;
+  /*sería igual a .card:hover .card_side--front {}, lo que implica que cuando hagamos hover sobre la card 
+  entonces se transforme el card_side--front*/ }
+  .card_side {
+    color: #fff;
+    font-size: 2rem;
+    height: 40rem;
+    transition: all 0.8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+    .card_side--front {
+      background-color: #fff; }
+    .card_side--back {
+      transform: rotateY(180deg); }
+      .card_side--back-1 {
+        background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
+  .card:hover .card_side--front {
+    transform: rotateY(-180deg); }
+  .card:hover .card_side--back {
+    transform: rotateY(0deg); }
+
 .feature-box {
   background-color: rgba(255, 255, 255, 0.8);
   font-size: 1.5rem;
@@ -437,3 +470,7 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
 
 /*explicación de los transform: con el skewY negativo distorcionamos hacia arriba el background. Luego
 para que nuestras tarjetas no se distorcionen ponemos transform positito, así se enderezan.*/
+.section-tours {
+  background-color: #f7f7f7;
+  padding: 25rem 0 50rem 0;
+  margin-top: -10rem; }

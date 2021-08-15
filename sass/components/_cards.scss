@@ -1,0 +1,54 @@
+.card {
+  perspective: 150rem;
+  -moz-perspective: 150rem; //para que funcione en firefox browser
+  /*hace que la tarjeta tenga un efecto de rotate más lindo. Si ponemos pocos rem veremos que el efecto
+  es más exagerado. Hay que ir probando hasta ver que se vea lindo. Acá con 150rem se ve bien, menos
+  ya se ve feo*/
+
+  position: relative; //relative en el parent
+  height: 40rem; //ponemos igual height que el child &_side, sino las alturas colapsan y se enciman
+
+  &_side {
+    color: #fff;
+    font-size: 2rem;
+    height: 40rem;
+    transition: all 0.8s ease;
+
+    position: absolute; //absolute en el child. Es para que los dos lados estén una sobre la otra
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden; //para no ver la cara de atrás de la tarjeta
+
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+    &--front {
+      background-color: $color-white;
+    }
+
+    &--back {
+      transform: rotateY(180deg);
+
+      &-1 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        );
+      }
+    }
+  }
+
+  &:hover &_side--front {
+    transform: rotateY(
+      -180deg
+    ); //negativo para que gire en la dirección contraria
+  }
+  /*sería igual a .card:hover .card_side--front {}, lo que implica que cuando hagamos hover sobre la card 
+  entonces se transforme el card_side--front*/
+
+  &:hover &_side--back {
+    transform: rotateY(0deg);
+  }
+}

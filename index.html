@@ -2,184 +2,232 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--Tipografía, en este caso de google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+  <!--Tipografía, en este caso de google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
 
-    <!--Fonts: acá usamos linea.io, te bajas el basic package y luego copias y pegás la carpeta font y 
+  <!--Fonts: acá usamos linea.io, te bajas el basic package y luego copias y pegás la carpeta font y 
 style.css (que renombramos como icon-font.css, para que no se confunda con nuestra carpeta de css 
 style-sheet) dentro de la carpeta css de nuestro proyecto.
 Aquellas estaban dentro de la carpeta de iconfont. Luego agregamos el link acá. Ya podemos usar nuestros
 fonts en la página. En la carpeta fonts vemos cuatro distnintos formatos, tenemos que ponerlos todos
 para que distintos browsers puedan reconocerlos, ver como están inclidos en icon-font.css-->
-    <link rel="stylesheet" href="css/icon-fonts.css">
+  <link rel="stylesheet" href="css/icon-fonts.css">
 
-    <!--Stylesheets-->
-    <link rel="stylesheet" href="css/style.css">
+  <!--Stylesheets-->
+  <link rel="stylesheet" href="css/style.css">
 
-    <!--Favicom-->
-    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+  <!--Favicom-->
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
 
-    <!--Titulo que sale en la pestaña del browser y para el SEO-->
-    <title>Natours | Exciting tours for adventurous people</title>
+  <!--Titulo que sale en la pestaña del browser y para el SEO-->
+  <title>Natours | Exciting tours for adventurous people</title>
 
 </head>
 
 <body>
 
-    <!--HEADER-->
+  <!--HEADER-->
 
-    <header class="header">
-        <!--standalone block component-->
-        <div class="header__logo-box">
-            <!--a block element component-->
-            <img src="img/logo-white.png" alt="logo" class="header__logo">
-        </div>
-        <!--El logo lo insertamos dentro de un div. El header es el parent del div a la hora de
+  <header class="header">
+    <!--standalone block component-->
+    <div class="header__logo-box">
+      <!--a block element component-->
+      <img src="img/logo-white.png" alt="logo" class="header__logo">
+    </div>
+    <!--El logo lo insertamos dentro de un div. El header es el parent del div a la hora de
 entender como positioning. Ver el tema de position en el style.css-->
 
-        <div class="header__text-box">
-            <h1 class="heading-primary">
-                <!--standalone block component-->
-                <span class="heading-primary--main">
-                    <!--a block element modifier component-->
-                    Outdoors
-                </span>
-                <span class="heading-primary--sub">
-                    is where life happens
-                </span>
-            </h1>
-            <!--Acá dentro de h1 colocamos dos span para espués poder darles un estilo propio a cada uno.
+    <div class="header__text-box">
+      <h1 class="heading-primary">
+        <!--standalone block component-->
+        <span class="heading-primary--main">
+          <!--a block element modifier component-->
+          Outdoors
+        </span>
+        <span class="heading-primary--sub">
+          is where life happens
+        </span>
+      </h1>
+      <!--Acá dentro de h1 colocamos dos span para espués poder darles un estilo propio a cada uno.
 Los H1 son importantes para el SEO, ya luego usar h2 y siguientes-->
 
-            <a hfer="#" class="btn btn--white btn--animated">
-                Discover our tours
-            </a>
-            <!--Este es el botón del header. Le pusimos dos class name, algo que lo diferencia del id-->
-        </div>
-    </header>
+      <a hfer="#" class="btn btn--white btn--animated">
+        Discover our tours
+      </a>
+      <!--Este es el botón del header. Le pusimos dos class name, algo que lo diferencia del id-->
+    </div>
+  </header>
 
-    <!--MAIN SECTION-->
+  <!--MAIN SECTION-->
 
-    <main>
-        <!--main es un html tag que le va a decir al SEO y a los screewn-reader que es la sección principal 
+  <main>
+    <!--main es un html tag que le va a decir al SEO y a los screewn-reader que es la sección principal 
         de nuestra página -->
-        <section class="section-about">
-            <div class="u-center-text u-margin-bottom-big">
-                <!--estas clases son para establecer "utilities" para que el h2 dentro del div por ejemplo
+    <section class="section-about">
+      <div class="u-center-text u-margin-bottom-big">
+        <!--estas clases son para establecer "utilities" para que el h2 dentro del div por ejemplo
                 esté centrado dentro suyo, o para establecer margins. Ver carpeta "utilities".
                 Nos permite luego reutilizarla en otros momentos-->
-                <h2 class="heading-secondary">
-                    Exciting tours for adventurous people
-                </h2>
+        <h2 class="heading-secondary">
+          Exciting tours for adventurous people
+        </h2>
 
-            </div>
+      </div>
 
-            <!--grid con float (ver explicacion en mi codepen.io)-->
-            <div class="row">
-                <div class="col-1-of-2">
-                    <h3 class="heading-tertiary u-margin-bottom-small">
-                        Your are going to fall in love with nature
-                    </h3>
-                    <p class="paragraph">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis maiores
-                        quia molestias quaerat sunt,
-                    </p>
+      <!--grid con float (ver explicacion en mi codepen.io)-->
+      <div class="row">
+        <div class="col-1-of-2">
+          <h3 class="heading-tertiary u-margin-bottom-small">
+            Your are going to fall in love with nature
+          </h3>
+          <p class="paragraph">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis maiores
+            quia molestias quaerat sunt,
+          </p>
 
-                    <h3 class="heading-tertiary u-margin-bottom-small">
-                        Live adventure like you never have before
-                    </h3>
-                    <p class="paragraph">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis maiores
-                        quia molestias quaerat sunt,
-                    </p>
+          <h3 class="heading-tertiary u-margin-bottom-small">
+            Live adventure like you never have before
+          </h3>
+          <p class="paragraph">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis maiores
+            quia molestias quaerat sunt,
+          </p>
 
-                    <a href="#" class="btn-text">
-                        Learn more &rarr;
-                        <!--ese rarr es un codigo para que salga la flechita-->
-                    </a>
-                </div>
+          <a href="#" class="btn-text">
+            Learn more &rarr;
+            <!--ese rarr es un codigo para que salga la flechita-->
+          </a>
+        </div>
 
-                <div class="col-1-of-2">
-                    <div class="composition">
-                        <img src="img/nat-1-large.jpg" alt="photo 1" class="composition_photo composition_photo--p1">
-                        <img src="img/nat-2-large.jpg" alt="photo 2" class="composition_photo composition_photo--p2">
-                        <img src="img/nat-3-large.jpg" alt="photo 3" class="composition_photo composition_photo--p3">
-                    </div>
-                </div>
-            </div>
+        <div class="col-1-of-2">
+          <div class="composition">
+            <img src="img/nat-1-large.jpg" alt="photo 1" class="composition_photo composition_photo--p1">
+            <img src="img/nat-2-large.jpg" alt="photo 2" class="composition_photo composition_photo--p2">
+            <img src="img/nat-3-large.jpg" alt="photo 3" class="composition_photo composition_photo--p3">
+          </div>
+        </div>
+      </div>
 
-        </section>
+    </section>
 
-        <!--FEATURE SECTION-->
+    <!--FEATURE SECTION-->
 
-        <section class="feature-section">
+    <section class="feature-section">
 
-            <div class="row">
+      <div class="row">
 
-                <div class="col-1-of-4">
-                    <div class="feature-box">
-                        <i class="feature-box_icon icon-basic-world"></i>
-                        <!--usamos i pero se puede usar cq otro tag. Así agregamos
+        <div class="col-1-of-4">
+          <div class="feature-box">
+            <i class="feature-box_icon icon-basic-world"></i>
+            <!--usamos i pero se puede usar cq otro tag. Así agregamos
             el icon. Dentro de class colocamos su nombre según el paquete que nos bajamos. El primer
             nombre es el de la clase, el segundo nombre es el del ícono para agregarlo-->
-                        <h3 class="heading-tertiary u-margin-bottom-small">
-                            Explore de world
-                        </h3>
-                        <p class="feature-box_text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        </p>
-                    </div>
-                </div>
+            <h3 class="heading-tertiary u-margin-bottom-small">
+              Explore de world
+            </h3>
+            <p class="feature-box_text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
+        </div>
 
-                <div class="col-1-of-4">
-                    <div class="feature-box">
-                        <i class="feature-box_icon icon-basic-compass"></i>
-                        <h3 class="heading-tertiary u-margin-bottom-small">
-                            Meet nature
-                        </h3>
-                        <p class="feature-box_text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. lalkd aldkfja
-                        </p>
-                    </div>
-                </div>
+        <div class="col-1-of-4">
+          <div class="feature-box">
+            <i class="feature-box_icon icon-basic-compass"></i>
+            <h3 class="heading-tertiary u-margin-bottom-small">
+              Meet nature
+            </h3>
+            <p class="feature-box_text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. lalkd aldkfja
+            </p>
+          </div>
+        </div>
 
-                <div class="col-1-of-4">
-                    <div class="feature-box">
-                        <i class="feature-box_icon icon-basic-map"></i>
+        <div class="col-1-of-4">
+          <div class="feature-box">
+            <i class="feature-box_icon icon-basic-map"></i>
 
-                        <h3 class="heading-tertiary u-margin-bottom-small">
-                            Find your way
-                        </h3>
-                        <p class="feature-box_text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. lalkd aldkfja
-                        </p>
-                    </div>
-                </div>
+            <h3 class="heading-tertiary u-margin-bottom-small">
+              Find your way
+            </h3>
+            <p class="feature-box_text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. lalkd aldkfja
+            </p>
+          </div>
+        </div>
 
-                <div class="col-1-of-4">
-                    <div class="feature-box">
-                        <i class="feature-box_icon icon-basic-heart"></i>
-                        <h3 class="heading-tertiary u-margin-bottom-small">
-                            Live a healthier life
-                        </h3>
-                        <p class="feature-box_text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        </p>
-                    </div>
+        <div class="col-1-of-4">
+          <div class="feature-box">
+            <i class="feature-box_icon icon-basic-heart"></i>
+            <h3 class="heading-tertiary u-margin-bottom-small">
+              Live a healthier life
+            </h3>
+            <p class="feature-box_text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
 
-                </div>
+        </div>
+      </div>
+    </section>
+
+    <!--TOUR SECTION-->
+
+    <section class="section-tours">
+      <div class="u-center-text u-margin-bottom-big">
+        <h2 class="heading-secondary">
+          Most popular tours
+        </h2>
+      </div>
+
+      <div class="row">
+        <div class="col-1-of-3">
+
+          <div class="card">
+            <div class="card_side card_side--front">
+              <div class="card_picture">
+                <!--acá va a ir una imagen con css-->
+              </div>
+              <div class="card_heading">
+                Heading
+              </div>
+              <div class="card_details">
+                Details
+              </div>
             </div>
-        </section>
+            <div class="card_side card_side--back card_side--back-1">
+              BACK
+            </div>
+          </div>
+        </div>
 
-    </main>
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card_side">
+
+            </div>
+          </div>
+        </div>
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card_side">
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
 
 
-    <!--EJEMPLO DE GRID QUE TENDRÁ FLOAT (ver explicaciones en mi codepen.io)
+  <!--EJEMPLO DE GRID QUE TENDRÁ FLOAT (ver explicaciones en mi codepen.io)
 
-        <section class="grid-test">
+<section class="grid-test">
   
   <div class="row">
     <div class="col-1-of-2">
@@ -248,7 +296,7 @@ Los H1 son importantes para el SEO, ya luego usar h2 y siguientes-->
   </div>
   
 </section>
-    -->
+-->
 
 </body>
 
