@@ -8,10 +8,10 @@
   ya se ve feo*/
 
   position: relative; //relative en el parent
-  height: 51rem; //ponemos igual height que el child &_side, sino las alturas colapsan y se enciman
+  height: 54rem; //ponemos igual height que el child &_side, sino las alturas colapsan y se enciman
 
   &_side {
-    height: 51rem;
+    height: 54rem;
     transition: all 0.8s ease;
 
     position: absolute; //absolute en el child. Es para que los dos lados estén una sobre la otra
@@ -36,6 +36,22 @@
           to right bottom,
           $color-secondary-light,
           $color-secondary-dark
+        );
+      }
+
+      &-2 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
+
+      &-3 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
         );
       }
     }
@@ -70,6 +86,9 @@
     ); //para que fxne en todos los browsers
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 
+    border-top-left-radius: 3px; //esto porque chrome y clip-path rompe el border-radius
+    border-top-right-radius: 3px;
+
     &--1 {
       background-image: linear-gradient(
           to right bottom,
@@ -78,6 +97,24 @@
         ),
         url(../img/nat-5.jpg);
     } //esto mezcla dos imágenes, el gradiente y la .jpg
+
+    &--2 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        ),
+        url(../img/nat-6.jpg);
+    }
+
+    &--3 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        ),
+        url(../img/nat-7.jpg);
+    }
   }
 
   &_heading {
@@ -107,6 +144,22 @@
         rgba($color-secondary-dark, 0.85)
       );
     }
+
+    &-2 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.85),
+        rgba($color-primary-dark, 0.85)
+      );
+    }
+
+    &-3 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-tertiary-light, 0.85),
+        rgba($color-tertiary-dark, 0.85)
+      );
+    }
   }
 
   &_details {
@@ -127,5 +180,35 @@
         }
       }
     }
+  }
+
+  //BACK-SIDE STYLING
+
+  &_cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(
+      -50%,
+      -50%
+    ); //así centramos un elemento con position y transform
+    width: 90%;
+    text-align: center;
+  }
+
+  &_price-box {
+    text-align: center;
+    color: $color-white;
+    margin-bottom: 8rem;
+  }
+
+  &_price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+
+  &_price-value {
+    font-size: 6rem;
+    font-weight: 100;
   }
 }

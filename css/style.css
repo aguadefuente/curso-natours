@@ -184,6 +184,12 @@ body {
 .u-margin-bottom-big {
   margin-bottom: 8rem; }
 
+.u-margin-top-big {
+  margin-top: 8rem; }
+
+.u-margin-top-huge {
+  margin-top: 10rem; }
+
 /***********BUTTON************/
 .btn {
   /*acá separo los selectors con comas, y tengo que poner primero el simple selector
@@ -241,6 +247,11 @@ body {
     */ }
     .btn--white::after {
       background-color: #fff; }
+  .btn--green {
+    background-color: #55c57a;
+    color: #fff; }
+    .btn--green::after {
+      background-color: #55c57a; }
   .btn::after {
     content: "";
     display: inline-block;
@@ -284,11 +295,11 @@ body {
   es más exagerado. Hay que ir probando hasta ver que se vea lindo. Acá con 150rem se ve bien, menos
   ya se ve feo*/
   position: relative;
-  height: 51rem;
+  height: 54rem;
   /*sería igual a .card:hover .card_side--front {}, lo que implica que cuando hagamos hover sobre la card 
   entonces se transforme el card_side--front*/ }
   .card_side {
-    height: 51rem;
+    height: 54rem;
     transition: all 0.8s ease;
     position: absolute;
     top: 0;
@@ -304,6 +315,10 @@ body {
       transform: rotateY(180deg); }
       .card_side--back-1 {
         background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
+      .card_side--back-2 {
+        background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+      .card_side--back-3 {
+        background-image: linear-gradient(to right bottom, #2998ff, #5643fa); }
   .card:hover .card_side--front {
     transform: rotateY(-180deg); }
   .card:hover .card_side--back {
@@ -315,9 +330,15 @@ body {
     /*esto va a compaginar las dos imágenes, gradient y jpg. 
     No funciona en todos los browsers*/
     -webkir-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px; }
     .card_picture--1 {
       background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../img/nat-5.jpg); }
+    .card_picture--2 {
+      background-image: linear-gradient(to right bottom, #7ed56f, #28b485), url(../img/nat-6.jpg); }
+    .card_picture--3 {
+      background-image: linear-gradient(to right bottom, #2998ff, #5643fa), url(../img/nat-7.jpg); }
   .card_heading {
     font-size: 2.8rem;
     font-weight: 300;
@@ -336,6 +357,10 @@ body {
     heading se desalinea*/ }
     .card_heading--span-1 {
       background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); }
+    .card_heading--span-2 {
+      background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.85), rgba(40, 180, 133, 0.85)); }
+    .card_heading--span-3 {
+      background-image: linear-gradient(to right bottom, rgba(41, 152, 255, 0.85), rgba(86, 67, 250, 0.85)); }
   .card_details {
     padding: 3rem; }
     .card_details ul {
@@ -348,6 +373,23 @@ body {
         padding: 1rem; }
         .card_details ul li:not(:last-child) {
           border-bottom: 1px solid #eee; }
+  .card_cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center; }
+  .card_price-box {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 8rem; }
+  .card_price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase; }
+  .card_price-value {
+    font-size: 6rem;
+    font-weight: 100; }
 
 .feature-box {
   background-color: rgba(255, 255, 255, 0.8);
@@ -512,5 +554,5 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
 para que nuestras tarjetas no se distorcionen ponemos transform positito, así se enderezan.*/
 .section-tours {
   background-color: #f7f7f7;
-  padding: 25rem 0 50rem 0;
+  padding: 25rem 0 15rem 0;
   margin-top: -10rem; }
