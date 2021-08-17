@@ -610,5 +610,5 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
   margin-top: -10rem; }
 
 .section-stories {
-  padding: 15rem 0;
+  padding: 0 0 15rem 0;
   background-color: #f7f7f7; }
