@@ -1,0 +1,40 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.103);
+  background-color: $color-white;
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $default-font-size;
+
+  transform: skewX(-12deg); //para darle forma al rectangulo blanco
+
+  &_shape {
+    height: 15rem;
+    width: 15rem;
+
+    float: left; //para que la imagen vaya a la izquierda del texto
+    -webkit-shape-outside: circle(
+      50% at 50% 50%
+    ); //para que funcione en fireforx
+    shape-outside: circle(
+      50% at 50% 50%
+    ); /*para que el texto envuelva circularmente la imagen. Para que funcione este shape-outside debemos 
+    definir el float, height y width*/
+
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%); //para que la imagen sea redonda
+
+    transform: translateX(-3rem) skewX(12deg);
+  } /* el translate es para dar más espacio a la izq.entre la img y el texto. El skew es para enderezar
+  la imagen ya que el rectángulo blanco tiene skew para deformarse -12deg*/
+
+  &_img {
+    height: 100%;
+  }
+
+  &_text {
+    transform: skewX(12deg); //para que el texto se enderece
+  }
+}

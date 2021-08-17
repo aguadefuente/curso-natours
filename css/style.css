@@ -391,33 +391,6 @@ body {
     font-size: 6rem;
     font-weight: 100; }
 
-.feature-box {
-  background-color: rgba(255, 255, 255, 0.8);
-  font-size: 1.5rem;
-  padding: 2.5rem;
-  text-align: center;
-  border-radius: 3px;
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.233);
-  transition: transform 0.3s; }
-  .feature-box_icon {
-    font-size: 6rem;
-    margin-bottom: 0.5rem;
-    background-image: linear-gradient(to right, #7ed56f, #28b485);
-    background-clip: text;
-    -webkit-background-clip: text;
-    /*Esto hace que el background-image gradient solo se pegue al texto.
-      Hay que poner dos veces el background-clip para que el navegador lo agarre. 
-      */
-    color: transparent;
-    /*el color del texto lo ponemos en transparente para solo ver el background-image gradient.
-      Si no lo ponemos transparente veremos el texto en su color gris, pues se sienta sobre el 
-      background-image con gradient*/
-    display: inline-block;
-    /*esto es para que el color solo ocupe el espacio de la tipografía. Porque el h2 sería un block
-      element y ocuparía todo el ancho de la pantalla, y el gradient se vería en todo el ancho*/ }
-  .feature-box:hover {
-    transform: translateY(-1.5rem) scale(1.03); }
-
 .composition {
   position: relative;
   /*esto es para que cuando hacemos hover sobre una foto las otras se achiquen
@@ -447,6 +420,61 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
       z-index: 20; }
   .composition:hover .composition_photo:not(:hover) {
     transform: scale(0.95) translateY(-0.5rem); }
+
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.233);
+  transition: transform 0.3s; }
+  .feature-box_icon {
+    font-size: 6rem;
+    margin-bottom: 0.5rem;
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    background-clip: text;
+    -webkit-background-clip: text;
+    /*Esto hace que el background-image gradient solo se pegue al texto.
+      Hay que poner dos veces el background-clip para que el navegador lo agarre. 
+      */
+    color: transparent;
+    /*el color del texto lo ponemos en transparente para solo ver el background-image gradient.
+      Si no lo ponemos transparente veremos el texto en su color gris, pues se sienta sobre el 
+      background-image con gradient*/
+    display: inline-block;
+    /*esto es para que el color solo ocupe el espacio de la tipografía. Porque el h2 sería un block
+      element y ocuparía todo el ancho de la pantalla, y el gradient se vería en todo el ancho*/ }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.03); }
+
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.103);
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: 1.6rem;
+  transform: skewX(-12deg);
+  /* el translate es para dar más espacio a la izq.entre la img y el texto. El skew es para enderezar
+  la imagen ya que el rectángulo blanco tiene skew para deformarse -12deg*/ }
+  .story_shape {
+    height: 15rem;
+    width: 15rem;
+    float: left;
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    /*para que el texto envuelva circularmente la imagen. Para que funcione este shape-outside debemos 
+    definir el float, height y width*/
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-3rem) skewX(12deg); }
+  .story_img {
+    height: 100%; }
+  .story_text {
+    transform: skewX(12deg); }
 
 .row {
   max-width: 114rem;
@@ -556,3 +584,7 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
   background-color: #f7f7f7;
   padding: 25rem 0 15rem 0;
   margin-top: -10rem; }
+
+.section-stories {
+  padding: 15rem 0;
+  background-color: #f7f7f7; }
