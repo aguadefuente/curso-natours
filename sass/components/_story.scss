@@ -1,7 +1,7 @@
 .story {
   width: 75%;
   margin: 0 auto;
-  box-shadow: 0 3rem 6rem rgba($color-black, 0.103);
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.2);
   background-color: $color-white;
   border-radius: 3px;
   padding: 6rem;
@@ -30,11 +30,44 @@
   } /* el translate es para dar más espacio a la izq.entre la img y el texto. El skew es para enderezar
   la imagen ya que el rectángulo blanco tiene skew para deformarse -12deg*/
 
+  position: relative; //es el container de &_caption
+
   &_img {
     height: 100%;
+
+    transform: translateX(-4rem) scale(1.4);
+    /*translate para que la chica de la img quede en el centro. Scale para la animación del hover
+    se haga más chiquita la imagen*/
+    transition: all 0.5s;
+    backface-visibility: hidden;
   }
 
   &_text {
     transform: skewX(12deg); //para que el texto se enderece
+  }
+
+  &_caption {
+    position: absolute; //para que esté encima de la &_shape que va a estar position relative
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+
+    opacity: 0;
+    transition: all 0.5s; //animación del texto Mary Smith
+    backface-visibility: hidden;
+  }
+
+  &:hover &_caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover &_img {
+    transform: translateX(-4rem) scale(1); //animación de la imagen que se achica
+    filter: blur(3px) brightness(80%);
   }
 }
