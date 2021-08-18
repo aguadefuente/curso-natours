@@ -2,7 +2,9 @@
   width: 75%;
   margin: 0 auto;
   box-shadow: 0 3rem 6rem rgba($color-black, 0.2);
-  background-color: $color-white;
+  background-color: rgba($color-white, 0.6);
+  /*para que sea medio transparente el background.No usamos
+  opacity porque sino todo el contenido se volvería medio transparente*/
   border-radius: 3px;
   padding: 6rem;
   padding-left: 9rem;
@@ -15,12 +17,10 @@
     width: 15rem;
 
     float: left; //para que la imagen vaya a la izquierda del texto
-    -webkit-shape-outside: circle(
-      50% at 50% 50%
-    ); //para que funcione en fireforx
-    shape-outside: circle(
-      50% at 50% 50%
-    ); /*para que el texto envuelva circularmente la imagen. Para que funcione este shape-outside debemos 
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    //para que funcione en fireforx
+    shape-outside: circle(50% at 50% 50%);
+    /*para que el texto envuelva circularmente la imagen. Para que funcione este shape-outside debemos 
     definir el float, height y width*/
 
     -webkit-clip-path: circle(50% at 50% 50%);

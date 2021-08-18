@@ -1,0 +1,20 @@
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  /*Así centramos el video para que quede como background. La position es absolute y la del parent 
+  es relative (ver en _home .section-stories*/
+
+  z-index: -1; //para que todos los elementos queden por encima del video
+  opacity: 0.15; //para que se vea más transparente
+
+  overflow: hidden; //para que en algunos browsers no de error el object-fit cover
+
+  &_content {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  } //para que el video ocupe todo el parent element y mantenga el aspect ratio
+}

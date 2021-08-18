@@ -38,6 +38,8 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
 }
 
 .section-stories {
-  padding: 0 0 15rem 0;
-  background-color: $color-grey-light-1;
+  padding: 15rem 0;
+
+  position: relative; /*lo ponemos position relative por ser el parent de bg-video a quien hemos dado
+  position:absolute. De este modo quedará el video encimado como si fuera un background*/
 }

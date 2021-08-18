@@ -190,6 +190,22 @@ body {
 .u-margin-top-huge {
   margin-top: 10rem; }
 
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  /*Así centramos el video para que quede como background. La position es absolute y la del parent 
+  es relative (ver en _home .section-stories*/
+  z-index: -1;
+  opacity: 0.15;
+  overflow: hidden; }
+  .bg-video_content {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; }
+
 /***********BUTTON************/
 .btn {
   /*acá separo los selectors con comas, y tengo que poner primero el simple selector
@@ -452,7 +468,9 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   width: 75%;
   margin: 0 auto;
   box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.2);
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.6);
+  /*para que sea medio transparente el background.No usamos
+  opacity porque sino todo el contenido se volvería medio transparente*/
   border-radius: 3px;
   padding: 6rem;
   padding-left: 9rem;
@@ -610,5 +628,7 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
   margin-top: -10rem; }
 
 .section-stories {
-  padding: 0 0 15rem 0;
-  background-color: #f7f7f7; }
+  padding: 15rem 0;
+  position: relative;
+  /*lo ponemos position relative por ser el parent de bg-video a quien hemos dado
+  position:absolute. De este modo quedará el video encimado como si fuera un background*/ }
