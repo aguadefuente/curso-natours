@@ -184,6 +184,9 @@ body {
 .u-margin-bottom-big {
   margin-bottom: 8rem; }
 
+.u-margin-top-small {
+  margin-top: 3rem; }
+
 .u-margin-top-big {
   margin-top: 8rem; }
 
@@ -236,7 +239,9 @@ body {
     position: relative;
     /*esto es para la animación con seudo-element*/
     font-size: 1.6rem;
-    /*es igual a 16px*/ }
+    /*es igual a 16px*/
+    border: none;
+    cursor: pointer; }
   .btn:hover {
     transform: translateY(-0.3rem);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
@@ -246,7 +251,8 @@ body {
     .btn:hover::after {
       transform: scaleX(1.4) scaleY(1.6);
       opacity: 0; }
-  .btn:active {
+  .btn:focus, .btn:active {
+    outline: none;
     transform: translateY(-0.1rem);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4); }
   .btn--white {
@@ -503,6 +509,45 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   visibility: hidden;
   transform: translateY(-4rem); }
 
+.form_radio-group {
+  width: 49%;
+  display: inline-block; }
+
+.form_radio-input {
+  display: none; }
+
+.form_radio-label {
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding-left: 4.5rem;
+  position: relative; }
+
+.form_radio-button {
+  height: 3rem;
+  width: 3rem;
+  border: 5px solid #55c57a;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: -0.4; }
+  .form_radio-button::after {
+    content: "";
+    display: block;
+    height: 1.3rem;
+    width: 1.3rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #55c57a;
+    opacity: 0;
+    transition: opacity 0.2s; }
+
+.form_radio-input:checked ~ .form_radio-label .form_radio-button::after {
+  opacity: 1; }
+
 .story {
   width: 75%;
   margin: 0 auto;
@@ -677,7 +722,7 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
   background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
 
 .book {
-  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(../img/nat-10.jpg);
+  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 55%, transparent 45%), url(../img/nat-10.jpg);
   /*Recuadro blanco para el formulario:desarrollamos otro modo de hacer una forma sin clip-path sino con 
   un linear-gradient. Lo que vemos es que colocando % en cada gradient-color determinamos hasta donde 
   llega cada color y al final no se mezclan sino que queda como un solid-color gradient, como dos colores 
@@ -688,4 +733,4 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
   height: 50rem; }
   .book_form {
     width: 50%;
-    padding: 6rem; }
+    padding: 2rem; }

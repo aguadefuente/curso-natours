@@ -16,6 +16,9 @@
 
     position: relative; /*esto es para la animación con seudo-element*/
     font-size: $default-font-size; /*es igual a 16px*/
+
+    border: none;
+    cursor: pointer;
   }
 
   /*acá separo los selectors con comas, y tengo que poner primero el simple selector
@@ -38,7 +41,9 @@
     en 1.5 veces su tamaño y que se ponga transparente (opacity)*/
   }
 
+  &:focus,
   &:active {
+    outline: none;
     transform: translateY(-0.1rem);
     box-shadow: 0 0.5rem 1rem rgba($color-black, 0.4);
   }
