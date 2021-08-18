@@ -43,3 +43,38 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
   position: relative; /*lo ponemos position relative por ser el parent de bg-video a quien hemos dado
   position:absolute. De este modo quedará el video encimado como si fuera un background*/
 }
+
+.section-book {
+  padding: 15rem;
+  background-image: linear-gradient(
+    to right bottom,
+    $color-primary-light,
+    $color-primary-dark
+  );
+}
+
+.book {
+  background-image: linear-gradient(
+      105deg,
+      rgba($color-white, 0.9) 0%,
+      rgba($color-white, 0.9) 50%,
+      transparent 50%
+    ),
+    url(../img/nat-10.jpg);
+
+  /*Recuadro blanco para el formulario:desarrollamos otro modo de hacer una forma sin clip-path sino con 
+  un linear-gradient. Lo que vemos es que colocando % en cada gradient-color determinamos hasta donde 
+  llega cada color y al final no se mezclan sino que queda como un solid-color gradient, como dos colores 
+  separados, una parte blanca y otra no. Usamos color transparent para que se vea la imagen de fondo*/
+
+  background-size: cover; //podríamos poner sino 100%
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.5);
+
+  height: 50rem;
+
+  &_form {
+    width: 50%;
+    padding: 6rem;
+  }
+}
