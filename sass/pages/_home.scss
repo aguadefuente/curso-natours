@@ -45,7 +45,7 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
 }
 
 .section-book {
-  padding: 15rem;
+  padding: 15rem 0;
   background-image: linear-gradient(
     to right bottom,
     $color-primary-light,
@@ -57,15 +57,16 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
   background-image: linear-gradient(
       105deg,
       rgba($color-white, 0.9) 0%,
-      rgba($color-white, 0.9) 55%,
-      transparent 45%
+      rgba($color-white, 0.9) 50%,
+      transparent 50%
     ),
     url(../img/nat-10.jpg);
 
   /*Recuadro blanco para el formulario:desarrollamos otro modo de hacer una forma sin clip-path sino con 
-  un linear-gradient. Lo que vemos es que colocando % en cada gradient-color determinamos hasta donde 
-  llega cada color y al final no se mezclan sino que queda como un solid-color gradient, como dos colores 
-  separados, una parte blanca y otra no. Usamos color transparent para que se vea la imagen de fondo*/
+  un linear-gradient. Lo que vemos es que colocando degres en vez de por ej. to right bottom y también
+  % en cada gradient-color determinamos hasta donde llega cada color y al final no se mezclan sino que 
+  queda como un solid-color gradient, como dos colores separados, una parte blanca y otra no. 
+  Usamos color transparent para que se vea la imagen de fondo*/
 
   background-size: cover; //podríamos poner sino 100%
   border-radius: 3px;
@@ -75,6 +76,6 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
 
   &_form {
     width: 50%;
-    padding: 2rem;
+    padding: 2.5rem;
   }
 }

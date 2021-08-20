@@ -185,7 +185,7 @@ body {
   margin-bottom: 8rem; }
 
 .u-margin-top-small {
-  margin-top: 3rem; }
+  margin-top: 4.5rem; }
 
 .u-margin-top-big {
   margin-top: 8rem; }
@@ -193,6 +193,10 @@ body {
 .u-margin-top-huge {
   margin-top: 10rem; }
 
+/*Es práctica usual en las utilities colocarles a todas !important, entonces así siempre 
+van a ganar en especificidad - 
+ej) .u-margin-bottom-small {margin-bottom: 1.5rem !important;}
+*/
 .bg-video {
   position: absolute;
   top: 0;
@@ -470,83 +474,86 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   .feature-box:hover {
     transform: translateY(-1.5rem) scale(1.03); }
 
-.form_group:not(:last-child) {
-  margin-bottom: 2rem; }
-
-.form_input {
-  font-size: 1.5rem;
-  font-family: inherit;
-  color: inherit;
-  padding: 1.5rem 2rem;
-  border-radius: 2px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border: none;
-  width: 90%;
-  display: block;
-  border-bottom: 3px solid transparent;
-  transition: all 0.3s;
-  /*a diferencia de :hover que es cuando el mouse se posiciona por encima, en :focus es cuando se 
-      selecciona el elemento - se le hace click*/ }
-  .form_input:focus {
-    outline: none;
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
-    border-bottom: 3px solid #55c57a; }
-  .form_input::-webkit-input-placeholder {
-    color: #999; }
-  .form_input:focus:invalid {
-    border-bottom: 3px solid #ff7730; }
-
-.form_label {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-left: 2rem;
-  margin-top: 0.7rem;
-  display: block;
-  transition: all 0.2s; }
-
-.form_input:placeholder-shown + .form_label {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-4rem); }
-
-.form_radio-group {
-  width: 49%;
-  display: inline-block; }
-
-.form_radio-input {
-  display: none; }
-
-.form_radio-label {
-  font-size: 1.2rem;
-  cursor: pointer;
-  padding-left: 4.5rem;
-  position: relative; }
-
-.form_radio-button {
-  height: 3rem;
-  width: 3rem;
-  border: 5px solid #55c57a;
-  border-radius: 50%;
-  display: inline-block;
-  position: absolute;
-  left: 0;
-  top: -0.4; }
-  .form_radio-button::after {
-    content: "";
+.form {
+  /* haremos nuestro propio boton verde porque por defecto es un simple círculo gris
+  Está conformado por dos partes, el contorno verde y el pequeño punto cuando seleccionamos el mismo. 
+  El primero es dentro de &_radio-button y el segundo mediante el pseudo-element ::after*/ }
+  .form_group:not(:last-child) {
+    margin-bottom: 2rem; }
+  .form_input {
+    font-size: 1.5rem;
+    font-family: inherit;
+    color: inherit;
+    /*ponemos inherit porque por defecto cuando usamos formulario no aplica el font-family, ni el color
+    que hemos determinado en nuestra página antes, sino el by default. 
+    Entonces lo solucionamos con inherit*/
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
     display: block;
-    height: 1.3rem;
-    width: 1.3rem;
+    width: 90%;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    /*Usamos la invalid pseudo-class para que cuando hagamos focus sobre el input se ponga borde
+    color naranja mientas no ingresemos lo que corresponde, ej) un mail válido. Cuando sea correcto
+    aparecerá el borde inferior verde*/ }
+    .form_input:focus {
+      /*a diferencia de :hover que es cuando el mouse se posiciona por encima, en :focus es cuando se 
+      selecciona el elemento - se le hace click*/
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+      border-bottom: 3px solid #55c57a; }
+    .form_input::-webkit-input-placeholder {
+      /*Pseudo elemente. Funciona solo en Safari y Chrome. Para que el font sea del color que querramos
+      sino el by default es letra color negro*/
+      color: #999; }
+    .form_input:focus:invalid {
+      border-bottom: 3px solid #ff7730; }
+  .form_label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: 0.7rem;
+    display: block;
+    transition: all 0.2s; }
+  .form_input:placeholder-shown + .form_label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem); }
+  .form_radio-group {
+    width: 49%;
+    display: inline-block; }
+  .form_radio-input {
+    display: none; }
+  .form_radio-label {
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding-left: 4.5rem;
+    position: relative; }
+  .form_radio-button {
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid #55c57a;
     border-radius: 50%;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #55c57a;
-    opacity: 0;
-    transition: opacity 0.2s; }
-
-.form_radio-input:checked ~ .form_radio-label .form_radio-button::after {
-  opacity: 1; }
+    left: 0;
+    top: 0; }
+    .form_radio-button::after {
+      content: "";
+      display: block;
+      height: 1.3rem;
+      width: 1.3rem;
+      border-radius: 50%;
+      background-color: #55c57a;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.2s; }
+  .form_radio-input:checked ~ .form_radio-label .form_radio-button::after {
+    opacity: 1; }
 
 .story {
   width: 75%;
@@ -756,19 +763,20 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
   position:absolute. De este modo quedará el video encimado como si fuera un background*/ }
 
 .section-book {
-  padding: 15rem;
+  padding: 15rem 0;
   background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
 
 .book {
-  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 55%, transparent 45%), url(../img/nat-10.jpg);
+  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(../img/nat-10.jpg);
   /*Recuadro blanco para el formulario:desarrollamos otro modo de hacer una forma sin clip-path sino con 
-  un linear-gradient. Lo que vemos es que colocando % en cada gradient-color determinamos hasta donde 
-  llega cada color y al final no se mezclan sino que queda como un solid-color gradient, como dos colores 
-  separados, una parte blanca y otra no. Usamos color transparent para que se vea la imagen de fondo*/
+  un linear-gradient. Lo que vemos es que colocando degres en vez de por ej. to right bottom y también
+  % en cada gradient-color determinamos hasta donde llega cada color y al final no se mezclan sino que 
+  queda como un solid-color gradient, como dos colores separados, una parte blanca y otra no. 
+  Usamos color transparent para que se vea la imagen de fondo*/
   background-size: cover;
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.5);
   height: 50rem; }
   .book_form {
     width: 50%;
-    padding: 2rem; }
+    padding: 2.5rem; }

@@ -7,32 +7,42 @@
     font-size: 1.5rem;
     font-family: inherit;
     color: inherit;
-    padding: 1.5rem 2rem;
+    /*ponemos inherit porque por defecto cuando usamos formulario no aplica el font-family, ni el color
+    que hemos determinado en nuestra página antes, sino el by default. 
+    Entonces lo solucionamos con inherit*/
+    padding: 1.5rem 2rem; //dícese que más ancho en los costados se ve mejor
     border-radius: 2px;
     background-color: rgba($color-white, 0.5);
     border: none;
-    width: 90%;
-    display: block;
 
-    border-bottom: 3px solid transparent;
+    display: block; //porque por defecto es inline y ntros queremos que ocupe todo el ancho del continent
+    width: 90%; //acá definimos cuanto del ancho debe ocupar, para que no sea 100% como sería de por sí
+
+    border-bottom: 3px solid transparent; //acá transparent y el :focus el borde será verde
 
     transition: all 0.3s;
 
     &:focus {
-      outline: none;
-      box-shadow: 0 1rem 2rem rgba($color-black, 0.3);
-      border-bottom: 3px solid $color-primary;
-    }
-    /*a diferencia de :hover que es cuando el mouse se posiciona por encima, en :focus es cuando se 
+      /*a diferencia de :hover que es cuando el mouse se posiciona por encima, en :focus es cuando se 
       selecciona el elemento - se le hace click*/
 
+      outline: none; //esto le saca el reborde que por defecto hacen los browser sobre el input
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.3);
+
+      border-bottom: 3px solid $color-primary;
+    } //acá el borde verde y el input "transparent" y en :invalid borde naranja
+
     &::-webkit-input-placeholder {
+      /*Pseudo elemente. Funciona solo en Safari y Chrome. Para que el font sea del color que querramos
+      sino el by default es letra color negro*/
       color: $color-grey-dark-2;
     }
 
     &:focus:invalid {
       border-bottom: 3px solid $color-secondary-dark;
-    }
+    } /*Usamos la invalid pseudo-class para que cuando hagamos focus sobre el input se ponga borde
+    color naranja mientas no ingresemos lo que corresponde, ej) un mail válido. Cuando sea correcto
+    aparecerá el borde inferior verde*/
   }
 
   &_label {
@@ -45,6 +55,10 @@
     transition: all 0.2s;
   }
 
+  //ANIMACIÓN PARA QUE EL LABEL BAJE Y APAREZCA RECIÉN CUANDO QUERRAMOS ESCRIBIR ALGO EN EL INPUT
+  //Lo hacemos con placeholder-shown pseudo-class y adyacent sibling selector
+  //para que el laber sea adyacent-sibling tiene que estar después del input en el código de html
+
   &_input:placeholder-shown + &_label {
     opacity: 0;
     visibility: hidden;
@@ -52,50 +66,61 @@
     transform: translateY(-4rem);
   }
 
+  //BOTONCITOS VERDES
+
   &_radio-group {
     width: 49%;
-    display: inline-block;
+    display: inline-block; //para que los radio estén uno al lado del otro
   }
 
   &_radio-input {
-    display: none;
+    display: none; //para que no se vea el radio input que el browser pone por defecto
   }
 
   &_radio-label {
     font-size: 1.2rem;
-    cursor: pointer;
+    cursor: pointer; //vemos la manito cuando nos colocamos por encima del radio input
     padding-left: 4.5rem;
 
     position: relative;
   }
 
+  /* haremos nuestro propio boton verde porque por defecto es un simple círculo gris
+  Está conformado por dos partes, el contorno verde y el pequeño punto cuando seleccionamos el mismo. 
+  El primero es dentro de &_radio-button y el segundo mediante el pseudo-element ::after*/
+
   &_radio-button {
     height: 3rem;
     width: 3rem;
     border: 5px solid $color-primary;
-    border-radius: 50%;
-    display: inline-block;
+    border-radius: 50%; //esto hace sea circular
+    //display: inline-block; esta manera no termina de colocar el reborde verde dde queremos. Mejor con positioning
 
-    position: absolute;
+    position: absolute; //el parent es radio-label, entonce alli ponemos position:relative
     left: 0;
-    top: -0.4;
+    top: 0;
 
     &::after {
+      //siempre hay que poner content (lo vamos a dejar vacío) y diplay
       content: "";
       display: block;
       height: 1.3rem;
       width: 1.3rem;
-      border-radius: 50%;
-      position: absolute;
+      border-radius: 50%; //para que sea redondo
+      background-color: $color-primary;
+
+      position: absolute; //el parent es radio-button que ya tiene positioning:absolute
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background-color: $color-primary;
 
       opacity: 0;
       transition: opacity 0.2s;
     }
   }
+
+  //Para que aparezca el circulito verde cuando hacemos
+  //arriba vemos opacity 0 y el transition, abajo el opacity es 1 así entonces se ve el circulito verde
 
   &_radio-input:checked ~ &_radio-label &_radio-button::after {
     opacity: 1;
