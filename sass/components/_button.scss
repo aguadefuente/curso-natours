@@ -43,7 +43,7 @@
 
   &:focus,
   &:active {
-    outline: none;
+    outline: none; //para que no se vea un cuadro que por defecto pone el browser
     transform: translateY(-0.1rem);
     box-shadow: 0 0.5rem 1rem rgba($color-black, 0.4);
   }
