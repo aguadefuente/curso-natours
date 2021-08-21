@@ -1,0 +1,105 @@
+.navigation {
+  &_checkbox {
+    display: none; //para que no se vea el checkbox por defecto del browser
+  }
+
+  &_button {
+    background-color: $color-white;
+
+    //para que sea redondo. Un poco más grande que el _background para que lo cubra
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+
+    position: fixed;
+    top: 6rem;
+    right: 6rem;
+    z-index: 2000; //para que quede por encima del _background
+  }
+
+  &_background {
+    //acá hacemos un circulo verde que luego se expandirá (está detrás del circulo blanco _button)
+
+    //para que sea redondo
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+
+    background-image: radial-gradient(
+      $color-primary-light,
+      $color-primary-dark
+    );
+
+    z-index: 1000;
+
+    transform: scale(80);
+  }
+
+  &_nav {
+    height: 100%;
+    width: 100%; //podríamos no definirlo porque al ser block-elem ya ocupa todo el width
+
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    z-index: 1500; //para que quede encima del _background pero por debajo del _button
+  }
+
+  &_list {
+    //Centramos - como lo repetimos mucho en el código Hacer un mixin (TAREA)
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    list-style: none;
+    text-align: center;
+  }
+
+  &_item {
+    margin: 1rem;
+  }
+
+  &_link {
+    &:link,
+    &:visited {
+      display: inline-block;
+      font-size: 3rem;
+      font-weight: 300;
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      padding: 1rem 2rem;
+
+      //para el efecto del background blanco sobre los items
+      background-image: linear-gradient(
+        120deg,
+        transparent 0%,
+        transparent 50%,
+        $color-white 50%
+      );
+      background-size: 220%;
+
+      transition: all 0.2s;
+
+      span {
+        margin-right: 1.5rem;
+        display: inline-block;
+      }
+    }
+
+    &:hover,
+    &:active {
+      background-position: 100%;
+      color: $color-primary;
+
+      transform: translateX(1rem);
+    }
+  }
+}
