@@ -738,6 +738,7 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     display: none; }
   .navigation_button {
     background-color: #fff;
+    text-align: center;
     height: 7rem;
     width: 7rem;
     border-radius: 50%;
@@ -745,7 +746,8 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     top: 6rem;
     right: 6rem;
     z-index: 2000;
-    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1); }
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+    cursor: pointer; }
   .navigation_background {
     height: 6rem;
     width: 6rem;
@@ -800,6 +802,35 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   .navigation_checkbox:checked ~ .navigation_nav {
     opacity: 1;
     width: 100%; }
+  .navigation_icon {
+    position: relative;
+    margin-top: 3.5rem; }
+    .navigation_icon, .navigation_icon::before, .navigation_icon::after {
+      width: 3rem;
+      height: 2px;
+      background-color: #333;
+      display: inline-block; }
+    .navigation_icon::before, .navigation_icon::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all 0.2s; }
+    .navigation_icon::before {
+      top: -0.8rem; }
+    .navigation_icon::after {
+      top: 0.8rem; }
+  .navigation_button:hover .navigation_icon::before {
+    top: -1rem; }
+  .navigation_button:hover .navigation_icon::after {
+    top: 1rem; }
+  .navigation_checkbox:checked + .navigation_button .navigation_icon {
+    background-color: transparent; }
+  .navigation_checkbox:checked + .navigation_button .navigation_icon::before {
+    top: 0;
+    transform: rotate(135deg); }
+  .navigation_checkbox:checked + .navigation_button .navigation_icon::after {
+    top: 0;
+    transform: rotate(-135deg); }
 
 .section-about {
   background-color: #f7f7f7;
