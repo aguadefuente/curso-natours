@@ -741,7 +741,8 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   position: fixed;
   top: 6rem;
   right: 6rem;
-  z-index: 2000; }
+  z-index: 2000;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1); }
 
 .navigation_background {
   height: 6rem;
@@ -752,15 +753,19 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   right: 6.5rem;
   background-image: radial-gradient(#7ed56f, #28b485);
   z-index: 1000;
-  transform: scale(80); }
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1); }
 
 .navigation_nav {
   height: 100%;
-  width: 100%;
   position: fixed;
   top: 0;
-  right: 0;
-  z-index: 1500; }
+  left: 0;
+  z-index: 1500;
+  opacity: 0;
+  width: 0;
+  /*opacity:0; ...haría que no lo vieramos en el fondo pero tiene el problema de que igual el 
+    cursor marcaría que hay links. Por eso tb tenemos que ponerle widht:0;*/
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
 
 .navigation_list {
   position: absolute;
@@ -768,7 +773,8 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   left: 50%;
   transform: translate(-50%, -50%);
   list-style: none;
-  text-align: center; }
+  text-align: center;
+  width: 100%; }
 
 .navigation_item {
   margin: 1rem; }
@@ -792,6 +798,13 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   background-position: 100%;
   color: #55c57a;
   transform: translateX(1rem); }
+
+.navigation_checkbox:checked ~ .navigation_background {
+  transform: scale(80); }
+
+.navigation_checkbox:checked ~ .navigation_nav {
+  opacity: 1;
+  width: 100%; }
 
 .section-about {
   background-color: #f7f7f7;
