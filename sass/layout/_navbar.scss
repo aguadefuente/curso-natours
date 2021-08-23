@@ -38,8 +38,11 @@
 
     z-index: 1000; //hace quede detrás del &_nav
 
-    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1); //tool para sacar las cuentas https://easings.net/
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
   }
+  /*tool para sacar las cuentas https://easings.net/. 
+  A Bézier curve can be used to specify the velocity over time of an object such as an icon moving 
+  from A to B, rather than simply moving at a fixed number of pixels per step*/
 
   &_nav {
     height: 100%;
