@@ -7,12 +7,17 @@
   top: 0;
   left: 0;
 
-  z-index: 9999;
+  z-index: 9999; //para que se ponga delante de todo
+
+  opacity: 0;
+  visibility: hidden; //estos dos hará que no se vea hasta que hagamos en click en el botón que digamos
+
+  transition: all 0.3s; //animation en rlx al target
 
   &_content {
     @include absCenter;
 
-    width: 75%;
+    width: 79%;
     background-color: $color-white;
 
     box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
@@ -20,11 +25,16 @@
     overflow: hidden; //para que se vean las esquinas redondeadas sino collapsan
 
     display: table;
-  }
-
-  /*técnica para centrar verticalmente. Al parent &_content le ponemos display:table; y a los child 
+    /*técnica para centrar verticalmente. Al parent &_content le ponemos display:table; y a los child 
    &_left y &_right les ponemos display:table-cell;. El browser les dará automáticamente a todos el
    mismo height.*/
+
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25);
+    /*tenemos que poner el translate porque como el mixin ya tiene un transform si no repetimos lo
+    que define el mismo no nos funcionaría el scale*/
+    transition: all 0.4s;
+  }
 
   &_left {
     width: 33.333333%;
@@ -62,4 +72,36 @@
   }
   /*coloca guión donde debe separar las palabras. Hay que poner en el html el idioma de nuestra página 
   para que funcione correctamente*/
+
+  //Animación tarjeta popup
+
+  &:target {
+    opacity: 1;
+    visibility: visible;
+  } //cuando apretemos el botón detrás de las tarjetas el popup se verá. poner transition en .popup
+
+  &:target &_content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  } //cdo el popup sea el target entonces el _content realiza la animación. Se agranda y se visibiliza
+
+  &_close {
+    &:link,
+    &:visited {
+      color: $color-grey-dark;
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      font-size: 3rem;
+      line-height: 0;
+      text-decoration: none;
+      display: inline-block;
+
+      transition: all 0.2s;
+    }
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
 }

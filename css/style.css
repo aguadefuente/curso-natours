@@ -563,20 +563,30 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   top: 0;
   left: 0;
   z-index: 9999;
-  /*técnica para centrar verticalmente. Al parent &_content le ponemos display:table; y a los child 
-   &_left y &_right les ponemos display:table-cell;. El browser les dará automáticamente a todos el
-   mismo height.*/ }
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  /*coloca guión donde debe separar las palabras. Hay que poner en el html el idioma de nuestra página 
+  para que funcione correctamente*/ }
   .popup_content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 75%;
+    width: 79%;
     background-color: #fff;
     box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
     border-radius: 3px;
     overflow: hidden;
-    display: table; }
+    display: table;
+    /*técnica para centrar verticalmente. Al parent &_content le ponemos display:table; y a los child 
+   &_left y &_right les ponemos display:table-cell;. El browser les dará automáticamente a todos el
+   mismo height.*/
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25);
+    /*tenemos que poner el translate porque como el mixin ya tiene un transform si no repetimos lo
+    que define el mismo no nos funcionaría el scale*/
+    transition: all 0.4s; }
   .popup_left {
     width: 33.333333%;
     display: table-cell; }
@@ -591,10 +601,34 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   .popup_text {
     font-size: 1.4rem;
     margin-bottom: 4rem;
+    -moz-column-count: 2;
+    -moz-column-gap: 4rem;
+    -moz-column-rule: 1px solid #eee;
     column-count: 2;
     column-gap: 4rem;
     column-rule: 1px solid #eee;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
     hyphens: auto; }
+  .popup:target {
+    opacity: 1;
+    visibility: visible; }
+  .popup:target .popup_content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); }
+  .popup_close:link, .popup_close:visited {
+    color: #777;
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    font-size: 3rem;
+    line-height: 0;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s; }
+  .popup_close:hover {
+    color: #55c57a; }
 
 .story {
   width: 75%;

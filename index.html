@@ -251,8 +251,9 @@ Los H1 son importantes para el SEO, ya luego usar h2 y siguientes-->
                   <p class="card_price-only">Only</p>
                   <p class="card_price-value"> $297</p>
                 </div>
-                <a href="#" class="btn btn--white">Book now!</a>
+                <a href="#popup" class="btn btn--white">Book now!</a>
                 <!--btn--white es un botón que tenemos ya creado en components folder-->
+                <!--#popup es un id anchor para que al apretar el botón nos lleve a donde le digamos-->
 
               </div>
             </div>
@@ -297,7 +298,7 @@ Los H1 son importantes para el SEO, ya luego usar h2 y siguientes-->
                   <p class="card_price-only">Only</p>
                   <p class="card_price-value"> $497</p>
                 </div>
-                <a href="#" class="btn btn--white">Book now!</a>
+                <a href="#popup" class="btn btn--white">Book now!</a>
 
               </div>
             </div>
@@ -343,7 +344,7 @@ Los H1 son importantes para el SEO, ya luego usar h2 y siguientes-->
                   <p class="card_price-only">Only</p>
                   <p class="card_price-value"> $897</p>
                 </div>
-                <a href="#" class="btn btn--white">Book now!</a>
+                <a href="#popup" class="btn btn--white">Book now!</a>
 
               </div>
             </div>
@@ -531,7 +532,9 @@ Los H1 son importantes para el SEO, ya luego usar h2 y siguientes-->
   </footer>
 
   <!--POP-UP-->
-  <div class="popup">
+  <div class="popup" id="popup">
+    <!--este id popup es el que pusimos detrás de las cards en en btn, que al apretarlo hará que el 
+    popup id se convierta en un target y haga que aparezca el popup-->
 
     <div class="popup_content">
 
@@ -541,6 +544,8 @@ Los H1 son importantes para el SEO, ya luego usar h2 y siguientes-->
       </div>
 
       <div class="popup_right">
+        <a href="#section-tours" class="popup_close">&times;</a>
+        <!--id para cerrar el popup. &times; dibuja una equis-->
         <h2 class="heading-secondary u-margin-bottom-small">Start booking now</h2>
         <h3 class="heading-tertiary u-margin-bottom-small">Important &ndash; Please read this terms before booking</h3>
         <p class="popup_text">
@@ -556,8 +561,11 @@ Los H1 son importantes para el SEO, ya luego usar h2 y siguientes-->
 
   </div>
 
+</body>
 
-  <!--EJEMPLO DE GRID QUE TENDRÁ FLOAT (ver explicaciones en mi codepen.io)
+</html>
+
+<!--EJEMPLO DE GRID QUE TENDRÁ FLOAT (ver explicaciones en mi codepen.io)
 
 <section class="grid-test">
   
@@ -629,7 +637,3 @@ Los H1 son importantes para el SEO, ya luego usar h2 y siguientes-->
   
 </section>
 -->
-
-</body>
-
-</html>
