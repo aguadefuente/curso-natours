@@ -1,0 +1,65 @@
+.popup {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba($color-black, 0.8);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: 9999;
+
+  &_content {
+    @include absCenter;
+
+    width: 75%;
+    background-color: $color-white;
+
+    box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
+    border-radius: 3px;
+    overflow: hidden; //para que se vean las esquinas redondeadas sino collapsan
+
+    display: table;
+  }
+
+  /*técnica para centrar verticalmente. Al parent &_content le ponemos display:table; y a los child 
+   &_left y &_right les ponemos display:table-cell;. El browser les dará automáticamente a todos el
+   mismo height.*/
+
+  &_left {
+    width: 33.333333%;
+    display: table-cell; //es una técnica para centrar verticalmente un elemento
+  }
+
+  &_right {
+    width: 66.6666667%;
+    display: table-cell;
+
+    vertical-align: middle; //es algo que podemos aplicar a las table-cell para que se centre
+    padding: 3rem 5rem;
+  }
+
+  &_img {
+    display: block; //para que las imágenes vayan una debajo de la otra
+    width: 100%; //para que ocupe todo el parent width
+  }
+
+  &_text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+
+    -moz-column-count: 2;
+    -moz-column-gap: 4rem;
+    -moz-column-rule: 1px solid $color-grey-light-2;
+    column-count: 2; //divide en texto en dos columnas
+    column-gap: 4rem; //el espacio entre columnas (por defectos es de 1rem=14px because is the font-size of the current element)
+    column-rule: 1px solid $color-grey-light-2; //es el borde entre columnas
+
+    -moz-hyphens: auto; //firefox
+    -ms-hyphens: auto; //edge
+    -webkit-hyphens: auto; //chrome and safari
+    hyphens: auto;
+  }
+  /*coloca guión donde debe separar las palabras. Hay que poner en el html el idioma de nuestra página 
+  para que funcione correctamente*/
+}

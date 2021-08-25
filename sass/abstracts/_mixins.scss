@@ -10,3 +10,12 @@
 heigth a 0px y se encimen unos a otros. Con este clearfix por medio del pseudo-element ::after creamos 
 un elemento por detrás que mantiene la altura.
 Luego agregamos este mixin con @include*/
+
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+//mixin para centrar elementos
