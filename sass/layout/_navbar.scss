@@ -19,6 +19,15 @@
 
     box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
     cursor: pointer;
+
+    @include respond(tab-port) {
+      top: 4rem;
+      right: 4rem;
+    }
+    @include respond(phone) {
+      top: 3rem;
+      right: 3rem;
+    }
   }
 
   &_background {
@@ -41,10 +50,19 @@
     z-index: 1000; //hace quede detrás del &_nav
 
     transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+    /*tool para sacar las cuentas https://easings.net/. 
+    A Bézier curve can be used to specify the velocity over time of an object such as an icon moving 
+    from A to B, rather than simply moving at a fixed number of pixels per step*/
+
+    @include respond(tab-port) {
+      top: 4.5rem;
+      right: 4.5rem;
+    }
+    @include respond(phone) {
+      top: 3.5rem;
+      right: 3.5rem;
+    }
   }
-  /*tool para sacar las cuentas https://easings.net/. 
-  A Bézier curve can be used to specify the velocity over time of an object such as an icon moving 
-  from A to B, rather than simply moving at a fixed number of pixels per step*/
 
   &_nav {
     height: 100%;

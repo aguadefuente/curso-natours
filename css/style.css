@@ -3,6 +3,50 @@
 heigth a 0px y se encimen unos a otros. Con este clearfix por medio del pseudo-element ::after creamos 
 un elemento por detrás que mantiene la altura.
 Luego agregamos este mixin con @include*/
+/*
+0 - 600px            =  phone
+600px - 900px        =  tablet portrait
+900px - 1200px       =  tablet landscape
+(1200px - 1800px) is where our normal style apply. this is a desktop firs approach
+1800px               =  big desktop
+
+vamos a escribir max-width media-queries para los tres primeros y min-width para el último
+
+Esta sería una forma:
+
+@mixin respond-phone {
+  @media (max-width: 600px) { @content;}
+} 
+
+Luego vamos al selector que querramos y ponemos @include respond-phone {..;}
+El problema es que tendríamos que hacer un mixin para cada breakpoint. 
+
+Entonces otra forma es la que veremos abajo y en el selector ponemos @include respond(phone) {..;}
+  
+definimos : $BREAKPOINT ARGUMENT CHOICES
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+hacemos la conversión de px a em: 1em = 16px
+
+600px = 37.5em (600/16) 
+ 
+900px = 56.25em
+
+1200px = 75em
+
+1800px = 112.5em
+
+*/
+/*Media-queries que vamos a hacer y el orden:
+- base
+- typography
+- general layout (header, footer, navigation bar...) + grid
+- page layout
+- component 
+*/
 /********ANIMATIÓN del Título del header*************/
 @keyframes moveInLeft {
   0% {
@@ -63,27 +107,64 @@ Luego agregamos este mixin con @include*/
   /* box-sizing: border-box; esto lo vamos a colocar en el body para aprovechar el inherit keyword 
   en nuestra página web y es una mejor práctica poner acá inherit y en el body border-box*/ }
 
-/*
-- Arriba lo que hicimos fue usar el "univesal selector" para resetear los margenes y padding
+/* Arriba lo que hicimos fue usar el "univesal selector" para resetear los margenes y padding
 que por defecto tendríamos según los browsers. Es un basic reset. Agregamos tb pseudo-classes.
 - Box sizing es útil a la hora de calcular todo lo que es el tamaña de los elementos y querer
 agregarle paddings y margins...etc.
 */
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  /* es un base element porque define lo que un rem debe ser - no lo ponemos en la carpeta de typography
+  - root element. Así todas nuestras unidades rem hacen referencia a este root y se multiplicarían por 10
+  - No vamos a definir el font-size en px, porque eso impide al usuario modificar luego el tamaño de la
+  fuente con el browser. Lo que queremos es definirlo en porcentaje.
+  - Si ponemos font-size 100% equivaldría a 16px, porque ese es el default value de los font-size.
+  - Como queremos que sean 10px hacemos regla de tres simples 100*10/16 = 62.5%
+    (Ahora el user va a poder zoom in and zoom out no solo el font-size sino tb la página en sí)
+  - Nota: el viejo Internet expolorer no soporta rems
+  */
+  /* ejemplo de como incluir un mixin con @content:
+  @include respond-phone {
+  font-size: 50%;
+  } 
+  */
+  /*
+  @include respond(phone) {font-size: 50%; } 
+    
+  Al phone lo sacamos porque con el tab-port tiene igual parámetro 
+  */ }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
-/* es un base element porque define lo que un rem debe ser - 
-por eso no lo ponemos en la carpeta de typography
-- root element. Así todas nuestras unidades rem hacen referencia a este root y se multiplicarían por 10
-- No vamos a definir el font-size en px, porque eso impide al usuario modificar luego el tamaño de la
-fuente con el browser. Lo que queremos es definirlo en porcentaje.
-Si ponemos font-size 100% equivaldría a 16px, porque ese es el default value de los font-size.
-Como queremos que sean 10px hacemos regla de tres simples 100*10/16 = 62.5%
-Ahora el user va a poder zoom in and zoom out no solo el font-size sino tb la página en sí
-- Nota: el viejo Internet expolorer no soporta rems
+/* Antes definimos que queríamos que 1rem=10px no los 16px por defecto del browser
+- para eso calculamos 100*10/16 = 62.5%
+  Luego hicimos lo mismo con cada media-query: 
+- por ejemplo decidimos que: 
+   - tab-land     1rem=9px   entonces  9/16=56.25%
+   - tab-port     1rem=8px   entonces  8/16=50%
+   - big-desktop  1rem=12px  entonces  12/16=75%
+
+- Los media-query tienen que ir de mayor a menor para que no entren en conflicto. Si hubieran dos con
+igual parámetro es el último el que se aplica.
+
+- Todos estos porcentajes van a influir en todos los selectors dde hayamos determinado su tamaño en rem
+dado que están en relación a estos mismos. Así todo se agrandará o achicará según los parámetros de los
+queries.
 */
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  padding: 3rem;
+  /*antes habíamos puesto 30px. Ahora son 3rem que multiplicado por 10px del html es igual a 30px*/ }
+  @media (max-width: 56.25em) {
+    body {
+      padding: 0; } }
 
 body {
   font-family: "Lato", sans-serif;
@@ -91,9 +172,7 @@ body {
   /* font-size: 16px; antes de crear el root teníamos este font-size 
     que ahora sacamos para poner las demás unidades en rem*/
   line-height: 1.7;
-  color: #777;
-  padding: 3rem;
-  /*antes habíamos puesto 30px. Ahora son 3rem que multiplicado por 10px del html es igual a 30px*/ }
+  color: #777; }
 
 /*
   - font-family, es de google fonts, cuyo link hay que agregar en el código html, head section.
@@ -111,14 +190,14 @@ body {
   margin-bottom: 6rem;
   /*es para que el button se separe del heading*/
   /*
-    -usamos display block para que cada span esté uno debajo del otro, de lo contrario by default
-    son un inline element y estarían uno al lado del otro
-    -el font-weight lo especificamos porque por defecto h1 tiene bold, y se sobreescribe al que
-    ya habíamos puesto en el body por estar el h1 luego del body. Así que volvemos a poner 400px
-    para que no sea bold.
-    - Aniation property, en el heading-primary-sub usé el shorthand (de animation-name, animation-duration,
-    animation-timing-function. 
-    */ }
+  -usamos display block para que cada span esté uno debajo del otro, de lo contrario by default
+  son un inline element y estarían uno al lado del otro
+  -el font-weight lo especificamos porque por defecto h1 tiene bold, y se sobreescribe al que
+  ya habíamos puesto en el body por estar el h1 luego del body. Así que volvemos a poner 400px
+  para que no sea bold.
+  - Aniation property, en el heading-primary-sub usé el shorthand (de animation-name, animation-duration,
+  animation-timing-function. 
+  */ }
   .heading-primary--main {
     display: block;
     font-size: 6rem;
@@ -129,6 +208,10 @@ body {
     animation-name: moveInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out; }
+    @media (max-width: 37.5em) {
+      .heading-primary--main {
+        letter-spacing: 1rem;
+        font-size: 5rem; } }
   .heading-primary--sub {
     display: block;
     font-size: 2rem;
@@ -137,6 +220,9 @@ body {
     letter-spacing: 1.74rem;
     /*igual a 17.4px*/
     animation: moveInRight 1s ease-out; }
+    @media (max-width: 37.5em) {
+      .heading-primary--sub {
+        letter-spacing: 0.5rem; } }
 
 .heading-secondary {
   font-size: 3.5rem;
@@ -158,6 +244,12 @@ body {
   /*esto es para que el color solo ocupe el espacio de la tipografía. Porque el h2 sería un block
   element y ocuparía todo el ancho de la pantalla, y el gradient se vería en todo el ancho*/
   transition: all 0.2s; }
+  @media (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
+  @media (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2rem; } }
   .heading-secondary:hover {
     transform: skewY(2deg) skewX(15deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.315); }
@@ -687,7 +779,11 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
 .footer {
   background-color: #333;
   padding: 10rem 0;
-  font-size: 1.2rem; }
+  font-size: 1.2rem;
+  color: #f7f7f7; }
+  @media (max-width: 56.25em) {
+    .footer {
+      padding: 8rem 0; } }
   .footer_logo-box {
     text-align: center;
     margin-bottom: 8rem; }
@@ -699,6 +795,10 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     padding-top: 2rem;
     display: inline-block;
     width: 85%; }
+    @media (max-width: 56.25em) {
+      .footer_navigation {
+        width: 100%;
+        text-align: center; } }
   .footer_list {
     list-style: none; }
   .footer_item {
@@ -727,6 +827,13 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   margin: 0 4rem; }
   .row:not(:last-child) {
     margin-bottom: 8rem; }
+    @media (max-width: 56.25em) {
+      .row:not(:last-child) {
+        margin-bottom: 6rem; } }
+  @media (max-width: 56.25em) {
+    .row {
+      max-width: 50rem;
+      padding: 0 3rem; } }
   .row::after {
     content: "";
     display: table;
@@ -735,6 +842,13 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 6rem; }
+      @media (max-width: 56.25em) {
+        .row [class^="col-"]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 6rem; } }
+    @media (max-width: 56.25em) {
+      .row [class^="col-"] {
+        width: 100% !important; } }
   .row .col-1-of-2 {
     width: calc((100% - 6rem) / 2); }
   .row .col-1-of-3 {
@@ -788,6 +902,10 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     el mismo, no desde su borde, es así que termina centrándose. Tb hace que sea responsive,
     y se mueva según el tamaño del browser.
     */ }
+  @media (max-width: 37.5em) {
+    .header {
+      -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 85vh, 0% 100%);
+      clip-path: polygon(0% 0%, 100% 0%, 100% 85vh, 0% 100%); } }
   .header__logo-box {
     position: absolute;
     top: 4rem;
@@ -805,107 +923,137 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     text-align: center;
     /*es para alinear el button*/ }
 
-.navigation {
+.navigation_checkbox {
+  display: none; }
+
+.navigation_button {
+  background-color: #fff;
+  text-align: center;
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  position: fixed;
+  top: 6rem;
+  right: 6rem;
+  z-index: 2000;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  cursor: pointer; }
+  @media (max-width: 56.25em) {
+    .navigation_button {
+      top: 4rem;
+      right: 4rem; } }
+  @media (max-width: 37.5em) {
+    .navigation_button {
+      top: 3rem;
+      right: 3rem; } }
+
+.navigation_background {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  position: fixed;
+  top: 6.5rem;
+  right: 6.5rem;
+  background-image: radial-gradient(#7ed56f, #28b485);
+  z-index: 1000;
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
   /*tool para sacar las cuentas https://easings.net/. 
-  A Bézier curve can be used to specify the velocity over time of an object such as an icon moving 
-  from A to B, rather than simply moving at a fixed number of pixels per step*/ }
-  .navigation_checkbox {
-    display: none; }
-  .navigation_button {
-    background-color: #fff;
-    text-align: center;
-    height: 7rem;
-    width: 7rem;
-    border-radius: 50%;
-    position: fixed;
-    top: 6rem;
-    right: 6rem;
-    z-index: 2000;
-    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
-    cursor: pointer; }
-  .navigation_background {
-    height: 6rem;
-    width: 6rem;
-    border-radius: 50%;
-    position: fixed;
-    top: 6.5rem;
-    right: 6.5rem;
-    background-image: radial-gradient(#7ed56f, #28b485);
-    z-index: 1000;
-    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1); }
-  .navigation_nav {
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1500;
-    opacity: 0;
-    width: 0;
-    /*opacity:0; ...haría que no lo vieramos en el fondo pero tiene el problema de que igual el 
+    A Bézier curve can be used to specify the velocity over time of an object such as an icon moving 
+    from A to B, rather than simply moving at a fixed number of pixels per step*/ }
+  @media (max-width: 56.25em) {
+    .navigation_background {
+      top: 4.5rem;
+      right: 4.5rem; } }
+  @media (max-width: 37.5em) {
+    .navigation_background {
+      top: 3.5rem;
+      right: 3.5rem; } }
+
+.navigation_nav {
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1500;
+  opacity: 0;
+  width: 0;
+  /*opacity:0; ...haría que no lo vieramos en el fondo pero tiene el problema de que igual el 
     cursor marcaría que hay links. Por eso tb tenemos que ponerle widht:0;*/
-    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
-  .navigation_list {
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+
+.navigation_list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
+  width: 100%; }
+
+.navigation_item {
+  margin: 1rem; }
+
+.navigation_link:link, .navigation_link:visited {
+  display: inline-block;
+  font-size: 3rem;
+  font-weight: 300;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
+  background-size: 220%;
+  transition: all 0.2s; }
+  .navigation_link:link span, .navigation_link:visited span {
+    margin-right: 1.5rem;
+    display: inline-block; }
+
+.navigation_link:hover, .navigation_link:active {
+  background-position: 100%;
+  color: #55c57a;
+  transform: translateX(1rem); }
+
+.navigation_checkbox:checked ~ .navigation_background {
+  transform: scale(80); }
+
+.navigation_checkbox:checked ~ .navigation_nav {
+  opacity: 1;
+  width: 100%; }
+
+.navigation_icon {
+  position: relative;
+  margin-top: 3.5rem; }
+  .navigation_icon, .navigation_icon::before, .navigation_icon::after {
+    width: 3rem;
+    height: 2px;
+    background-color: #333;
+    display: inline-block; }
+  .navigation_icon::before, .navigation_icon::after {
+    content: "";
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    list-style: none;
-    text-align: center;
-    width: 100%; }
-  .navigation_item {
-    margin: 1rem; }
-  .navigation_link:link, .navigation_link:visited {
-    display: inline-block;
-    font-size: 3rem;
-    font-weight: 300;
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    padding: 1rem 2rem;
-    background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
-    background-size: 220%;
+    left: 0;
     transition: all 0.2s; }
-    .navigation_link:link span, .navigation_link:visited span {
-      margin-right: 1.5rem;
-      display: inline-block; }
-  .navigation_link:hover, .navigation_link:active {
-    background-position: 100%;
-    color: #55c57a;
-    transform: translateX(1rem); }
-  .navigation_checkbox:checked ~ .navigation_background {
-    transform: scale(80); }
-  .navigation_checkbox:checked ~ .navigation_nav {
-    opacity: 1;
-    width: 100%; }
-  .navigation_icon {
-    position: relative;
-    margin-top: 3.5rem; }
-    .navigation_icon, .navigation_icon::before, .navigation_icon::after {
-      width: 3rem;
-      height: 2px;
-      background-color: #333;
-      display: inline-block; }
-    .navigation_icon::before, .navigation_icon::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      transition: all 0.2s; }
-    .navigation_icon::before {
-      top: -0.8rem; }
-    .navigation_icon::after {
-      top: 0.8rem; }
-  .navigation_button:hover .navigation_icon::before {
-    top: -1rem; }
-  .navigation_button:hover .navigation_icon::after {
-    top: 1rem; }
-  .navigation_checkbox:checked + .navigation_button .navigation_icon {
-    background-color: transparent; }
-  .navigation_checkbox:checked + .navigation_button .navigation_icon::before {
-    top: 0;
-    transform: rotate(135deg); }
-  .navigation_checkbox:checked + .navigation_button .navigation_icon::after {
-    top: 0;
-    transform: rotate(-135deg); }
+  .navigation_icon::before {
+    top: -0.8rem; }
+  .navigation_icon::after {
+    top: 0.8rem; }
+
+.navigation_button:hover .navigation_icon::before {
+  top: -1rem; }
+
+.navigation_button:hover .navigation_icon::after {
+  top: 1rem; }
+
+.navigation_checkbox:checked + .navigation_button .navigation_icon {
+  background-color: transparent; }
+
+.navigation_checkbox:checked + .navigation_button .navigation_icon::before {
+  top: 0;
+  transform: rotate(135deg); }
+
+.navigation_checkbox:checked + .navigation_button .navigation_icon::after {
+  top: 0;
+  transform: rotate(-135deg); }
 
 .section-about {
   background-color: #f7f7f7;

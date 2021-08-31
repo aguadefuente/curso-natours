@@ -5,8 +5,6 @@ body {
     que ahora sacamos para poner las demás unidades en rem*/
   line-height: 1.7;
   color: $color-grey-dark;
-  padding: 3rem;
-  /*antes habíamos puesto 30px. Ahora son 3rem que multiplicado por 10px del html es igual a 30px*/
 }
 /*
   - font-family, es de google fonts, cuyo link hay que agregar en el código html, head section.
@@ -34,6 +32,11 @@ body {
     animation-name: moveInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out;
+
+    @include respond(phone) {
+      letter-spacing: 1rem;
+      font-size: 5rem;
+    }
   }
 
   &--sub {
@@ -43,17 +46,21 @@ body {
     letter-spacing: 1.74rem; /*igual a 17.4px*/
 
     animation: moveInRight 1s ease-out;
+
+    @include respond(phone) {
+      letter-spacing: 0.5rem;
+    }
   }
 
   /*
-    -usamos display block para que cada span esté uno debajo del otro, de lo contrario by default
-    son un inline element y estarían uno al lado del otro
-    -el font-weight lo especificamos porque por defecto h1 tiene bold, y se sobreescribe al que
-    ya habíamos puesto en el body por estar el h1 luego del body. Así que volvemos a poner 400px
-    para que no sea bold.
-    - Aniation property, en el heading-primary-sub usé el shorthand (de animation-name, animation-duration,
-    animation-timing-function. 
-    */
+  -usamos display block para que cada span esté uno debajo del otro, de lo contrario by default
+  son un inline element y estarían uno al lado del otro
+  -el font-weight lo especificamos porque por defecto h1 tiene bold, y se sobreescribe al que
+  ya habíamos puesto en el body por estar el h1 luego del body. Así que volvemos a poner 400px
+  para que no sea bold.
+  - Aniation property, en el heading-primary-sub usé el shorthand (de animation-name, animation-duration,
+  animation-timing-function. 
+  */
 }
 
 .heading-secondary {
@@ -61,6 +68,14 @@ body {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 2px;
+
+  @include respond(tab-port) {
+    font-size: 2.5rem;
+  }
+
+  @include respond(phone) {
+    font-size: 2rem;
+  }
 
   /*GRADIENTE PARA LAS LETRAS. Se le pone un background-image con gradient*/
 

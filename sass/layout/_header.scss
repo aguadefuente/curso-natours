@@ -35,6 +35,16 @@
   sí. Entonces ponemos rgba y dentro nuestra variable más el grado de opacity.
   */
 
+  @include respond(phone) {
+    -webkit-clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 85vh,
+      0% 100%
+    ); //para que fxne en todos los browsers
+    clip-path: polygon(0% 0%, 100% 0%, 100% 85vh, 0% 100%); //cambiamos a 85vh
+  }
+
   &__logo-box {
     position: absolute;
     top: 4rem; /*antes pusimos 40px. Ahora es 4 por 10px del html root element igual 40px*/

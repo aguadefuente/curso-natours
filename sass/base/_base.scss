@@ -9,8 +9,8 @@
   /* box-sizing: border-box; esto lo vamos a colocar en el body para aprovechar el inherit keyword 
   en nuestra página web y es una mejor práctica poner acá inherit y en el body border-box*/
 }
-/*
-- Arriba lo que hicimos fue usar el "univesal selector" para resetear los margenes y padding
+
+/* Arriba lo que hicimos fue usar el "univesal selector" para resetear los margenes y padding
 que por defecto tendríamos según los browsers. Es un basic reset. Agregamos tb pseudo-classes.
 - Box sizing es útil a la hora de calcular todo lo que es el tamaña de los elementos y querer
 agregarle paddings y margins...etc.
@@ -18,18 +18,66 @@ agregarle paddings y margins...etc.
 
 html {
   font-size: 62.5%;
+
+  /* es un base element porque define lo que un rem debe ser - no lo ponemos en la carpeta de typography
+  - root element. Así todas nuestras unidades rem hacen referencia a este root y se multiplicarían por 10
+  - No vamos a definir el font-size en px, porque eso impide al usuario modificar luego el tamaño de la
+  fuente con el browser. Lo que queremos es definirlo en porcentaje.
+  - Si ponemos font-size 100% equivaldría a 16px, porque ese es el default value de los font-size.
+  - Como queremos que sean 10px hacemos regla de tres simples 100*10/16 = 62.5%
+    (Ahora el user va a poder zoom in and zoom out no solo el font-size sino tb la página en sí)
+  - Nota: el viejo Internet expolorer no soporta rems
+  */
+
+  /* ejemplo de como incluir un mixin con @content:
+  @include respond-phone {
+  font-size: 50%;
+  } 
+  */
+
+  // como incluir un mixin con @if content que es el que finalmente usaremos
+
+  /*
+  @include respond(phone) {font-size: 50%; } 
+    
+  Al phone lo sacamos porque con el tab-port tiene igual parámetro 
+  */
+
+  @include respond(tab-land) {
+    font-size: 56.25%;
+  } //width < 1200px
+
+  @include respond(tab-port) {
+    font-size: 50%;
+  } //width < 900px
+
+  @include respond(big-desktop) {
+    font-size: 75%;
+  }
 }
-/* es un base element porque define lo que un rem debe ser - 
-por eso no lo ponemos en la carpeta de typography
-- root element. Así todas nuestras unidades rem hacen referencia a este root y se multiplicarían por 10
-- No vamos a definir el font-size en px, porque eso impide al usuario modificar luego el tamaño de la
-fuente con el browser. Lo que queremos es definirlo en porcentaje.
-Si ponemos font-size 100% equivaldría a 16px, porque ese es el default value de los font-size.
-Como queremos que sean 10px hacemos regla de tres simples 100*10/16 = 62.5%
-Ahora el user va a poder zoom in and zoom out no solo el font-size sino tb la página en sí
-- Nota: el viejo Internet expolorer no soporta rems
+
+/* Antes definimos que queríamos que 1rem=10px no los 16px por defecto del browser
+- para eso calculamos 100*10/16 = 62.5%
+  Luego hicimos lo mismo con cada media-query: 
+- por ejemplo decidimos que: 
+   - tab-land     1rem=9px   entonces  9/16=56.25%
+   - tab-port     1rem=8px   entonces  8/16=50%
+   - big-desktop  1rem=12px  entonces  12/16=75%
+
+- Los media-query tienen que ir de mayor a menor para que no entren en conflicto. Si hubieran dos con
+igual parámetro es el último el que se aplica.
+
+- Todos estos porcentajes van a influir en todos los selectors dde hayamos determinado su tamaño en rem
+dado que están en relación a estos mismos. Así todo se agrandará o achicará según los parámetros de los
+queries.
 */
 
 body {
   box-sizing: border-box;
+  padding: 3rem;
+  /*antes habíamos puesto 30px. Ahora son 3rem que multiplicado por 10px del html es igual a 30px*/
+
+  @include respond(tab-port) {
+    padding: 0;
+  } //así a partir de acá o pantalla más chica se borra el reborde blanco
 }

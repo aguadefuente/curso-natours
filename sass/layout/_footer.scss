@@ -2,6 +2,11 @@
   background-color: $color-grey-dark-3;
   padding: 10rem 0;
   font-size: 1.2rem;
+  color: $color-grey-light-1;
+
+  @include respond(tab-port) {
+    padding: 8rem 0;
+  }
 
   &_logo-box {
     text-align: center; //por ser un inline-element lo centramos facilmente de este modo
@@ -19,6 +24,11 @@
     display: inline-block; //para que sólo ocupe en ancho necesario del elemento
 
     width: 85%;
+
+    @include respond(tab-port) {
+      width: 100%;
+      text-align: center;
+    }
   }
 
   &_list {
