@@ -8,6 +8,10 @@
 
   transition: transform 0.3s;
 
+  @include respond(tab-port) {
+    padding: 2rem;
+  }
+
   &_icon {
     font-size: 6rem;
     margin-bottom: 0.5rem;
@@ -29,6 +33,10 @@
     display: inline-block;
     /*esto es para que el color solo ocupe el espacio de la tipografía. Porque el h2 sería un block
       element y ocuparía todo el ancho de la pantalla, y el gradient se vería en todo el ancho*/
+
+    @include respond(tab-port) {
+      margin-bottom: 0;
+    }
   }
 
   &:hover {

@@ -2,6 +2,10 @@
   background-color: $color-grey-light-1;
   padding: 25rem 0;
   margin-top: -20vh;
+
+  @include respond(tab-port) {
+    padding: 20rem 0;
+  }
 }
 
 /*ponemos 25rem porque si vemos el header tiene de height 95vh y el clip-path del
@@ -26,6 +30,10 @@
   & > * {
     transform: skewY(7deg);
   } //esto sería .feature-section > * : es decir todos los direct child de feature-section
+
+  @include respond(tab-port) {
+    padding: 10rem 0;
+  }
 }
 
 /*explicación de los transform: con el skewY negativo distorcionamos hacia arriba el background. Luego
@@ -35,6 +43,10 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
   background-color: $color-grey-light-1;
   padding: 25rem 0 15rem 0;
   margin-top: -10rem;
+
+  @include respond(tab-port) {
+    padding: 20rem 0 10rem 0;
+  }
 }
 
 .section-stories {
@@ -42,6 +54,10 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
 
   position: relative; /*lo ponemos position relative por ser el parent de bg-video a quien hemos dado
   position:absolute. De este modo quedará el video encimado como si fuera un background*/
+
+  @include respond(tab-port) {
+    padding: 10rem 0;
+  }
 }
 
 .section-book {
@@ -51,6 +67,10 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
     $color-primary-light,
     $color-primary-dark
   );
+
+  @include respond(tab-port) {
+    padding: 10rem 0;
+  }
 }
 
 .book {

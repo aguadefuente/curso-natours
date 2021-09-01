@@ -246,10 +246,10 @@ body {
   transition: all 0.2s; }
   @media (max-width: 56.25em) {
     .heading-secondary {
-      font-size: 2.5rem; } }
+      font-size: 3rem; } }
   @media (max-width: 37.5em) {
     .heading-secondary {
-      font-size: 2rem; } }
+      font-size: 2.5rem; } }
   .heading-secondary:hover {
     transform: skewY(2deg) skewX(15deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.315); }
@@ -272,6 +272,9 @@ body {
 
 .u-margin-bottom-medium {
   margin-bottom: 4rem; }
+  @media (max-width: 56.25em) {
+    .u-margin-bottom-medium {
+      margin-top: 3rem !important; } }
 
 .u-margin-bottom-big {
   margin-bottom: 8rem; }
@@ -281,6 +284,9 @@ body {
 
 .u-margin-top-big {
   margin-top: 8rem; }
+  @media (max-width: 56.25em) {
+    .u-margin-top-big {
+      margin-top: 5rem !important; } }
 
 .u-margin-top-huge {
   margin-top: 10rem; }
@@ -522,15 +528,35 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     z-index: 10;
     transition: all 0.2s;
     outline-offset: 2rem; }
+    @media (max-width: 56.25em) {
+      .composition_photo {
+        float: left;
+        position: relative;
+        width: 33.3333333%;
+        box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2); } }
     .composition_photo--p1 {
       left: 0;
       top: -2rem; }
+      @media (max-width: 56.25em) {
+        .composition_photo--p1 {
+          top: 0;
+          transform: scale(1.2); } }
     .composition_photo--p2 {
-      right: 0;
+      right: -1rem;
       top: 2rem; }
+      @media (max-width: 56.25em) {
+        .composition_photo--p2 {
+          top: 0;
+          transform: scale(1.3);
+          z-index: 100; } }
     .composition_photo--p3 {
       left: 20%;
       top: 10rem; }
+      @media (max-width: 56.25em) {
+        .composition_photo--p3 {
+          top: 1rem;
+          left: 0;
+          transform: scale(1.1); } }
     .composition_photo:hover {
       outline: 1.5rem solid #55c57a;
       transform: scale(1.05);
@@ -547,6 +573,9 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.233);
   transition: transform 0.3s; }
+  @media (max-width: 56.25em) {
+    .feature-box {
+      padding: 2rem; } }
   .feature-box_icon {
     font-size: 6rem;
     margin-bottom: 0.5rem;
@@ -563,6 +592,9 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     display: inline-block;
     /*esto es para que el color solo ocupe el espacio de la tipografía. Porque el h2 sería un block
       element y ocuparía todo el ancho de la pantalla, y el gradient se vería en todo el ancho*/ }
+    @media (max-width: 56.25em) {
+      .feature-box_icon {
+        margin-bottom: 0; } }
   .feature-box:hover {
     transform: translateY(-1.5rem) scale(1.03); }
 
@@ -787,6 +819,9 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   .footer_logo-box {
     text-align: center;
     margin-bottom: 8rem; }
+    @media (max-width: 56.25em) {
+      .footer_logo-box {
+        margin-bottom: 4rem; } }
   .footer_logo {
     width: 15rem;
     height: auto; }
@@ -821,10 +856,14 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     padding-top: 2rem;
     width: 85%;
     float: right; }
+    @media (max-width: 56.25em) {
+      .footer_copyright {
+        width: 100%;
+        float: none; } }
 
 .row {
   max-width: 114rem;
-  margin: 0 4rem; }
+  margin: 0 auto; }
   .row:not(:last-child) {
     margin-bottom: 8rem; }
     @media (max-width: 56.25em) {
@@ -1059,6 +1098,9 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   background-color: #f7f7f7;
   padding: 25rem 0;
   margin-top: -20vh; }
+  @media (max-width: 56.25em) {
+    .section-about {
+      padding: 20rem 0; } }
 
 /*ponemos 25rem porque si vemos el header tiene de height 95vh y el clip-path del
   polígono llega hasta 75vh. La direfencia es 20. 
@@ -1073,6 +1115,9 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   transform: skewY(-7deg); }
   .feature-section > * {
     transform: skewY(7deg); }
+  @media (max-width: 56.25em) {
+    .feature-section {
+      padding: 10rem 0; } }
 
 /*explicación de los transform: con el skewY negativo distorcionamos hacia arriba el background. Luego
 para que nuestras tarjetas no se distorcionen ponemos transform positito, así se enderezan.*/
@@ -1080,16 +1125,25 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
   background-color: #f7f7f7;
   padding: 25rem 0 15rem 0;
   margin-top: -10rem; }
+  @media (max-width: 56.25em) {
+    .section-tours {
+      padding: 20rem 0 10rem 0; } }
 
 .section-stories {
   padding: 15rem 0;
   position: relative;
   /*lo ponemos position relative por ser el parent de bg-video a quien hemos dado
   position:absolute. De este modo quedará el video encimado como si fuera un background*/ }
+  @media (max-width: 56.25em) {
+    .section-stories {
+      padding: 10rem 0; } }
 
 .section-book {
   padding: 15rem 0;
   background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+  @media (max-width: 56.25em) {
+    .section-book {
+      padding: 10rem 0; } }
 
 .book {
   background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(../img/nat-10.jpg);

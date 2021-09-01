@@ -11,6 +11,10 @@
   &_logo-box {
     text-align: center; //por ser un inline-element lo centramos facilmente de este modo
     margin-bottom: 8rem;
+
+    @include respond(tab-port) {
+      margin-bottom: 4rem;
+    }
   }
 
   &_logo {
@@ -71,5 +75,10 @@
     //hace que quede simétrico y el logo en el centro de los dos border
     width: 85%;
     float: right;
+
+    @include respond(tab-port) {
+      width: 100%;
+      float: none;
+    }
   }
 }
