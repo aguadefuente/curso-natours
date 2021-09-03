@@ -746,9 +746,15 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     /*tenemos que poner el translate porque como el mixin ya tiene un transform si no repetimos lo
     que define el mismo no nos funcionaría el scale*/
     transition: all 0.4s; }
+    @media (max-width: 37.5em) {
+      .popup_content {
+        width: 90%; } }
   .popup_left {
     width: 33.333333%;
     display: table-cell; }
+    @media (max-width: 56.25em) {
+      .popup_left {
+        display: none; } }
   .popup_right {
     width: 66.6666667%;
     display: table-cell;
@@ -770,6 +776,9 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     -ms-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto; }
+    @media (max-width: 56.25em) {
+      .popup_text {
+        column-count: 1; } }
   .popup:target {
     opacity: 1;
     visibility: visible; }

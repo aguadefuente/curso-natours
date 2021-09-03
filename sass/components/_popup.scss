@@ -34,11 +34,22 @@
     /*tenemos que poner el translate porque como el mixin ya tiene un transform si no repetimos lo
     que define el mismo no nos funcionaría el scale*/
     transition: all 0.4s;
+
+    @include respond(phone) {
+      width: 90%;
+    }
   }
 
   &_left {
     width: 33.333333%;
     display: table-cell; //es una técnica para centrar verticalmente un elemento
+
+    @include respond(tab-land) {
+    }
+
+    @include respond(tab-port) {
+      display: none;
+    }
   }
 
   &_right {
@@ -69,11 +80,15 @@
     -ms-hyphens: auto; //edge
     -webkit-hyphens: auto; //chrome and safari
     hyphens: auto;
+
+    @include respond(tab-port) {
+      column-count: 1;
+    }
   }
   /*coloca guión donde debe separar las palabras. Hay que poner en el html el idioma de nuestra página 
   para que funcione correctamente*/
 
-  //Animación tarjeta popup
+  //ANIMACIÓN-EFECTO tarjeta popup
 
   &:target {
     opacity: 1;
