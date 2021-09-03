@@ -514,6 +514,34 @@ ej) .u-margin-bottom-small {margin-bottom: 1.5rem !important;}
   .card_price-value {
     font-size: 6rem;
     font-weight: 100; }
+  @media (max-width: 56.25em) {
+    .card {
+      height: auto;
+      border-radius: 3px;
+      background-color: #fff;
+      box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+      .card_side {
+        height: auto;
+        position: relative;
+        box-shadow: none; }
+        .card_side--back {
+          transform: rotateY(0);
+          clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%); }
+      .card:hover .card_side--front {
+        transform: rotateY(0); }
+      .card_details {
+        padding: 1rem 3rem; }
+      .card_cta {
+        position: relative;
+        top: 0%;
+        left: 0%;
+        transform: translate(0);
+        width: 100%;
+        padding: 7rem 4rem 4rem 4rem; }
+      .card_price-box {
+        margin-bottom: 3rem; }
+      .card_price-value {
+        font-size: 4rem; } }
 
 .composition {
   position: relative;
@@ -645,9 +673,16 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     opacity: 0;
     visibility: hidden;
     transform: translateY(-4rem); }
+    @media (max-width: 56.25em) {
+      .form_input:placeholder-shown + .form_label {
+        width: 100%; } }
   .form_radio-group {
     width: 49%;
     display: inline-block; }
+    @media (max-width: 56.25em) {
+      .form_radio-group {
+        width: 100%;
+        margin-bottom: 2rem; } }
   .form_radio-input {
     display: none; }
   .form_radio-label {
@@ -767,8 +802,15 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   font-size: 1.6rem;
   transform: skewX(-12deg);
   /* el translate es para dar más espacio a la izq.entre la img y el texto. El skew es para enderezar
-  la imagen ya que el rectángulo blanco tiene skew para deformarse -12deg*/
-  position: relative; }
+  la imagen ya que el rectángulo blanco tiene skew para deformarse -12deg*/ }
+  @media (max-width: 56.25em) {
+    .story {
+      width: 100%;
+      padding: 4rem;
+      padding-left: 7rem; } }
+  @media (max-width: 37.5em) {
+    .story {
+      transform: skewX(0); } }
   .story_shape {
     height: 15rem;
     width: 15rem;
@@ -779,7 +821,11 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     definir el float, height y width*/
     -webkit-clip-path: circle(50% at 50% 50%);
     clip-path: circle(50% at 50% 50%);
-    transform: translateX(-3rem) skewX(12deg); }
+    transform: translateX(-3rem) skewX(12deg);
+    position: relative; }
+    @media (max-width: 37.5em) {
+      .story_shape {
+        transform: translateX(-3rem) skewX(0); } }
   .story_img {
     height: 100%;
     transform: translateX(-4rem) scale(1.4);
@@ -789,6 +835,9 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     backface-visibility: hidden; }
   .story_text {
     transform: skewX(12deg); }
+    @media (max-width: 37.5em) {
+      .story_text {
+        transform: skewX(0); } }
   .story_caption {
     position: absolute;
     top: 50%;
@@ -1148,14 +1197,26 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
 .book {
   background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(../img/nat-10.jpg);
   /*Recuadro blanco para el formulario:desarrollamos otro modo de hacer una forma sin clip-path sino con 
-  un linear-gradient. Lo que vemos es que colocando degres en vez de por ej. to right bottom y también
-  % en cada gradient-color determinamos hasta donde llega cada color y al final no se mezclan sino que 
-  queda como un solid-color gradient, como dos colores separados, una parte blanca y otra no. 
-  Usamos color transparent para que se vea la imagen de fondo*/
+ un linear-gradient. Lo que vemos es que colocando degres en vez de por ej. to right bottom y también
+ % en cada gradient-color determinamos hasta donde llega cada color y al final no se mezclan sino que 
+ queda como un solid-color gradient, como dos colores separados, una parte blanca y otra no. 
+ Usamos color transparent para que se vea la imagen de fondo*/
   background-size: cover;
   border-radius: 3px;
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.5);
-  height: 50rem; }
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.5); }
+  @media (max-width: 75em) {
+    .book {
+      background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 65%, transparent 65%), url(../img/nat-10.jpg);
+      background-size: cover; } }
+  @media (max-width: 56.25em) {
+    .book {
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%), url(../img/nat-10.jpg); } }
   .book_form {
     width: 50%;
     padding: 2.5rem; }
+    @media (max-width: 75em) {
+      .book_form {
+        width: 70%; } }
+    @media (max-width: 56.25em) {
+      .book_form {
+        width: 100%; } }

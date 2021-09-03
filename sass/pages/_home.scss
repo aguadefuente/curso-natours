@@ -83,19 +83,46 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
     url(../img/nat-10.jpg);
 
   /*Recuadro blanco para el formulario:desarrollamos otro modo de hacer una forma sin clip-path sino con 
-  un linear-gradient. Lo que vemos es que colocando degres en vez de por ej. to right bottom y también
-  % en cada gradient-color determinamos hasta donde llega cada color y al final no se mezclan sino que 
-  queda como un solid-color gradient, como dos colores separados, una parte blanca y otra no. 
-  Usamos color transparent para que se vea la imagen de fondo*/
+ un linear-gradient. Lo que vemos es que colocando degres en vez de por ej. to right bottom y también
+ % en cada gradient-color determinamos hasta donde llega cada color y al final no se mezclan sino que 
+ queda como un solid-color gradient, como dos colores separados, una parte blanca y otra no. 
+ Usamos color transparent para que se vea la imagen de fondo*/
 
   background-size: cover; //podríamos poner sino 100%
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba($color-black, 0.5);
 
-  height: 50rem;
+  @include respond(tab-land) {
+    background-image: linear-gradient(
+        105deg,
+        rgba($color-white, 0.9) 0%,
+        rgba($color-white, 0.9) 65%,
+        transparent 65%
+      ),
+      url(../img/nat-10.jpg);
+
+    background-size: cover;
+  }
+
+  @include respond(tab-port) {
+    background-image: linear-gradient(
+        to right,
+        rgba($color-white, 0.9) 0%,
+        rgba($color-white, 0.9) 100%
+      ),
+      url(../img/nat-10.jpg);
+  }
 
   &_form {
     width: 50%;
     padding: 2.5rem;
+
+    @include respond(tab-land) {
+      width: 70%;
+    }
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
   }
 }

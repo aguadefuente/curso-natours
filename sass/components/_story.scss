@@ -12,6 +12,16 @@
 
   transform: skewX(-12deg); //para darle forma al rectangulo blanco
 
+  @include respond(tab-port) {
+    width: 100%;
+    padding: 4rem;
+    padding-left: 7rem;
+  }
+
+  @include respond(phone) {
+    transform: skewX(0);
+  }
+
   &_shape {
     height: 15rem;
     width: 15rem;
@@ -27,10 +37,16 @@
     clip-path: circle(50% at 50% 50%); //para que la imagen sea redonda
 
     transform: translateX(-3rem) skewX(12deg);
-  } /* el translate es para dar más espacio a la izq.entre la img y el texto. El skew es para enderezar
-  la imagen ya que el rectángulo blanco tiene skew para deformarse -12deg*/
 
-  position: relative; //es el container de &_caption
+    position: relative; //es el container de &_caption
+
+    @include respond(phone) {
+      transform: translateX(-3rem) skewX(0);
+    }
+  }
+
+  /* el translate es para dar más espacio a la izq.entre la img y el texto. El skew es para enderezar
+  la imagen ya que el rectángulo blanco tiene skew para deformarse -12deg*/
 
   &_img {
     height: 100%;
@@ -44,6 +60,10 @@
 
   &_text {
     transform: skewX(12deg); //para que el texto se enderece
+
+    @include respond(phone) {
+      transform: skewX(0);
+    }
   }
 
   &_caption {
