@@ -504,8 +504,24 @@ Los H1 son importantes para el SEO, ya luego usar h2 y siguientes-->
 
   <footer class="footer">
     <div class="footer_logo-box">
-      <img src="img/logo-green-2x.png" alt="logo" class="footer_logo">
+
+      <picture class="footer_logo">
+        <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x" media="(max-width: 37.5em)">
+        <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo">
+      </picture>
+
+      <!-- Responsive images:
+        1) Al principio sólo usamos <img src="img/logo-green-2x.png" alt="logo" class="footer_logo">, pero
+        así no es tan responsive. Por eso otro modo es usando: 
+        2) <img srcset="... 1x, ... 2x"> y no sólo src="", para poder poner dos imágenes. Usamos además
+        de srcset la "density description" (1x, 2x), para que el browser sepa cual usar para 2x-screen o
+        para 1x-screen (Density Switching)
+        3) En el tercer caso que es el que dejamos: usamos <picture> tag porque así además de <img srcset>
+        para Density Switching, usamos <source> tag para Art Direction, es decir usar una foto distinta
+        si el screen es más chico, en nuestro caso definimos en el media property un max-width de 37.5em-->
+
     </div>
+
     <div class="row">
 
       <div class="col-1-of-2">
@@ -533,7 +549,7 @@ Los H1 son importantes para el SEO, ya luego usar h2 y siguientes-->
 
   <!--POP-UP-->
   <div class="popup" id="popup">
-    <!--este id popup es el que pusimos detrás de las cards en en btn, que al apretarlo hará que el 
+    <!--este id popup es el que puslivos detrás de las cards en en btn, que al apretarlo hará que el 
     popup id se convierta en un target y haga que aparezca el popup-->
 
     <div class="popup_content">
