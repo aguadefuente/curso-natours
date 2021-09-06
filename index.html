@@ -131,10 +131,33 @@ Los H1 son importantes para el SEO, ya luego usar h2 y siguientes-->
 
         <div class="col-1-of-2">
           <div class="composition">
+
+            <img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
+              sizes="(max-width= 900px) 20vw, (max-width= 600px) 30vw, 300px" alt="photo 1"
+              class="composition_photo composition_photo--p1" src="img/nat-1-large.jpg">
+
+            <img srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
+              sizes="(max-width= 900px) 20vw, (max-width= 600px) 30vw, 300px" alt="photo 2"
+              class="composition_photo composition_photo--p2" src="img/nat-2-large.jpg">
+
+            <img srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
+              sizes="(max-width= 900px) 20vw, (max-width= 600px) 30vw, 300px" alt="photo 3"
+              class="composition_photo composition_photo--p3" src="img/nat-3-large.jpg">
+
+
+          </div>
+
+          <!--
+            1) Así lo hicimos antes sin tener en cuenta Responsive images:
             <img src="img/nat-1-large.jpg" alt="photo 1" class="composition_photo composition_photo--p1">
             <img src="img/nat-2-large.jpg" alt="photo 2" class="composition_photo composition_photo--p2">
             <img src="img/nat-3-large.jpg" alt="photo 3" class="composition_photo composition_photo--p3">
-          </div>
+            2) Resolution and Density switching: usamos srcset con width descriptor más sizes attritute. 
+            En el width description le decimos al browser el ancho de nuestra imagen así no la tiene que 
+            buscar él, y luego en el sizes attribute definimos el breakpoint max-width y le decimos cuanto
+            de viewport-width (vw)tiene que diplay the image. Al fina usamos tb src por si algún browser 
+            no soporta srcset -->
+
         </div>
       </div>
 
@@ -507,7 +530,7 @@ Los H1 son importantes para el SEO, ya luego usar h2 y siguientes-->
 
       <picture class="footer_logo">
         <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x" media="(max-width: 37.5em)">
-        <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo">
+        <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo" src="img/logo-green-2x.png">
       </picture>
 
       <!-- Responsive images:
@@ -518,7 +541,8 @@ Los H1 son importantes para el SEO, ya luego usar h2 y siguientes-->
         para 1x-screen (Density Switching)
         3) En el tercer caso que es el que dejamos: usamos <picture> tag porque así además de <img srcset>
         para Density Switching, usamos <source> tag para Art Direction, es decir usar una foto distinta
-        si el screen es más chico, en nuestro caso definimos en el media property un max-width de 37.5em-->
+        si el screen es más chico, en nuestro caso definimos en el media property un max-width de 37.5em
+        Nota: en <img> además de srcset usamos tb src por si algún browser no soporta srcset-->
 
     </div>
 
