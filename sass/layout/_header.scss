@@ -1,25 +1,6 @@
 /***************HEADER*****************/
 
-.header {
-  height: 95vh;
-  background-image: linear-gradient(
-      to right bottom,
-      rgba($color-primary-light, 0.8),
-      rgba($color-primary-dark, 0.8)
-    ),
-    url(../img/hero.jpg);
-  background-size: cover;
-  background-position: top;
-  -webkit-clip-path: polygon(
-    0% 0%,
-    100% 0%,
-    100% 75vh,
-    0% 100%
-  ); //para que fxne en todos los browsers
-  clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
-  position: relative;
-
-  /*
+/*
   -El header tiene una altura según el view port - no del 100% sino del 95%, para que siempre
   guarde esa dimensión.
   -Tiene una background image, y le ponemos antes de la url el linear gradient para que tenga
@@ -33,7 +14,46 @@
   La página https://bennettfeely.com/clippy/ te calcula cada lado para formar distintas figuras.
   - En CSS no podemos poner un hexagesimal color y después un opacity, sino rgba. Pero en SASS 
   sí. Entonces ponemos rgba y dentro nuestra variable más el grado de opacity.
-  */
+*/
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-secondary-light, 0.8),
+      rgba($color-secondary-dark, 0.8)
+    ),
+    url(../img/hero-small.jpg);
+  background-size: cover;
+  background-position: top;
+  -webkit-clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 75vh,
+    0% 100%
+  ); //para que fxne en todos los browsers
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
+  position: relative;
+
+  //Responsive Background-image - con mediaquery y resolution switch
+
+  /* dpi= dot per inch. 192 porque es el que usa Apple retine screen
+  min-resolution: cuando la resolución sea mayor a 192 entonces se aplica la imagen que dispusimos.
+  and min-width: pero si es mayor a 600px (37.5em) sino se aplica el hero-small.jpg
+  hero-small.jpg en 2x-screen (la de los celulares) se ve bien y no necesitamos que el browser cargue
+  la hero.jpg que es más grande de 1200px. El segundo min-width está precedido de una coma, lo que
+  significa que se aplique la imagen apartir de se 600px ó 2000px (125em) */
+
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)
+      ),
+      url(../img/hero.jpg);
+  }
+
+  //mediaquery para el poligono verde del header
 
   @include respond(phone) {
     -webkit-clip-path: polygon(
@@ -62,9 +82,7 @@
     height: 3.5rem;
     /* igual 35px*/
   }
-  /*
-    Sólo hace falta especificar el height y no el width, este lo pone el browser 
-    */
+  /*Sólo hace falta especificar el height y no el width, este lo pone el browser*/
 
   &__text-box {
     position: absolute;

@@ -246,10 +246,12 @@ body {
   transition: all 0.2s; }
   @media (max-width: 56.25em) {
     .heading-secondary {
-      font-size: 3rem; } }
+      font-size: 3rem;
+      margin-top: 6rem; } }
   @media (max-width: 37.5em) {
     .heading-secondary {
-      font-size: 2.5rem; } }
+      font-size: 2.5rem;
+      margin-top: 5.5rem; } }
   .heading-secondary:hover {
     transform: skewY(2deg) skewX(15deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.315); }
@@ -960,15 +962,7 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     width: calc( 3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
 
 /***************HEADER*****************/
-.header {
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  background-size: cover;
-  background-position: top;
-  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
-  clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
-  position: relative;
-  /*
+/*
   -El header tiene una altura según el view port - no del 100% sino del 95%, para que siempre
   guarde esa dimensión.
   -Tiene una background image, y le ponemos antes de la url el linear gradient para que tenga
@@ -982,7 +976,21 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   La página https://bennettfeely.com/clippy/ te calcula cada lado para formar distintas figuras.
   - En CSS no podemos poner un hexagesimal color y después un opacity, sino rgba. Pero en SASS 
   sí. Entonces ponemos rgba y dentro nuestra variable más el grado de opacity.
-  */
+*/
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.8), rgba(255, 119, 48, 0.8)), url(../img/hero-small.jpg);
+  background-size: cover;
+  background-position: top;
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
+  position: relative;
+  /* dpi= dot per inch. 192 porque es el que usa Apple retine screen
+  min-resolution: cuando la resolución sea mayor a 192 entonces se aplica la imagen que dispusimos.
+  and min-width: pero si es mayor a 600px (37.5em) sino se aplica el hero-small.jpg
+  hero-small.jpg en 2x-screen (la de los celulares) se ve bien y no necesitamos que el browser cargue
+  la hero.jpg que es más grande de 1200px. El segundo min-width está precedido de una coma, lo que
+  significa que se aplique la imagen apartir de se 600px ó 2000px (125em) */
   /*es el div que contiene el logo.
     - Acá la position es absolute. Pero si vemos en el header class su position es relative. Esto
     hace un juego entre ambos elementos. Header es el parent del logo-box, y siendo su position
@@ -990,15 +998,16 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     página mejor explicado  
     https://css-tricks.com/absolute-positioning-inside-relative-positioning/
     */
-  /*
-    Sólo hace falta especificar el height y no el width, este lo pone el browser 
-    */
+  /*Sólo hace falta especificar el height y no el width, este lo pone el browser*/
   /*
     - Usamos transform:translate porque el positioning top y left lo mide desde los bordes
     del div y no hace que quede centrado, mientras que transform:translate mueve el div desde 
     el mismo, no desde su borde, es así que termina centrándose. Tb hace que sea responsive,
     y se mueva según el tamaño del browser.
     */ }
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+    .header {
+      background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg); } }
   @media (max-width: 37.5em) {
     .header {
       -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 85vh, 0% 100%);
