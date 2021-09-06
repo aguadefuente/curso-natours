@@ -14,6 +14,16 @@
 
   transition: all 0.3s; //animation en rlx al target
 
+  -webkit-backdrop-filter: blur(10px); //para que funcione en Safari
+  backdrop-filter: blur(10px); //antes no funcionaba en Chrome ahora sí
+
+  @supports (-webkit-backdrop-filter: blur(10px)) or
+    (backdrop-filter: blur(10px)) {
+    -webkit-backdrop-filter: blur(10px); //para que funcione en Safari
+    backdrop-filter: blur(10px); //antes no funcionaba en Chrome ahora sí
+    background-color: rgba($color-black, 0.3);
+  }
+
   &_content {
     @include absCenter;
 

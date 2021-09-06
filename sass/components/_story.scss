@@ -27,18 +27,29 @@
     width: 15rem;
 
     float: left; //para que la imagen vaya a la izquierda del texto
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    //para que funcione en fireforx
-    shape-outside: circle(50% at 50% 50%);
-    /*para que el texto envuelva circularmente la imagen. Para que funcione este shape-outside debemos 
-    definir el float, height y width*/
-
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%); //para que la imagen sea redonda
 
     transform: translateX(-3rem) skewX(12deg);
 
     position: relative; //es el container de &_caption
+    overflow: hidden; //esto arregla problema que genera el browser - sin esto me hacía unas rallitas feas alrededor de la foto redonda
+
+    border-radius: 50%;
+
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%); //para que la imagen sea redonda
+
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      //para que funcione en fireforx
+      shape-outside: circle(50% at 50% 50%);
+      /*para que el texto envuelva circularmente la imagen. Para que funcione este shape-outside debemos 
+      definir el float, height y width*/
+
+      height: 15rem;
+      width: 15rem;
+
+      border-radius: none;
+    } //ver tema @supports en mis apuntes de responsive images
 
     @include respond(phone) {
       transform: translateX(-3rem) skewX(0);

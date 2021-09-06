@@ -431,6 +431,7 @@ ej) .u-margin-bottom-small {margin-bottom: 1.5rem !important;}
     top: 0;
     left: 0;
     width: 100%;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 3px;
     overflow: hidden;
@@ -727,8 +728,15 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   /*coloca guión donde debe separar las palabras. Hay que poner en el html el idioma de nuestra página 
   para que funcione correctamente*/ }
+  @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+    .popup {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      background-color: rgba(0, 0, 0, 0.3); } }
   .popup_content {
     position: absolute;
     top: 50%;
@@ -826,14 +834,21 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     height: 15rem;
     width: 15rem;
     float: left;
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%);
-    /*para que el texto envuelva circularmente la imagen. Para que funcione este shape-outside debemos 
-    definir el float, height y width*/
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%);
     transform: translateX(-3rem) skewX(12deg);
-    position: relative; }
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%; }
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      .story_shape {
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+        /*para que el texto envuelva circularmente la imagen. Para que funcione este shape-outside debemos 
+      definir el float, height y width*/
+        height: 15rem;
+        width: 15rem;
+        border-radius: none; } }
     @media (max-width: 37.5em) {
       .story_shape {
         transform: translateX(-3rem) skewX(0); } }
@@ -978,19 +993,20 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   sí. Entonces ponemos rgba y dentro nuestra variable más el grado de opacity.
 */
 .header {
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.8), rgba(255, 119, 48, 0.8)), url(../img/hero-small.jpg);
+  height: 85vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero-small.jpg);
   background-size: cover;
   background-position: top;
+  position: relative;
   -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
   clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
-  position: relative;
   /* dpi= dot per inch. 192 porque es el que usa Apple retine screen
   min-resolution: cuando la resolución sea mayor a 192 entonces se aplica la imagen que dispusimos.
   and min-width: pero si es mayor a 600px (37.5em) sino se aplica el hero-small.jpg
   hero-small.jpg en 2x-screen (la de los celulares) se ve bien y no necesitamos que el browser cargue
   la hero.jpg que es más grande de 1200px. El segundo min-width está precedido de una coma, lo que
-  significa que se aplique la imagen apartir de se 600px ó 2000px (125em) */
+  significa que se aplique la imagen apartir de se 600px ó 2000px (125em)
+  El webkit es para que funcione en Safari */
   /*es el div que contiene el logo.
     - Acá la position es absolute. Pero si vemos en el header class su position es relative. Esto
     hace un juego entre ambos elementos. Header es el parent del logo-box, y siendo su position
@@ -1005,7 +1021,12 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     el mismo, no desde su borde, es así que termina centrándose. Tb hace que sea responsive,
     y se mueva según el tamaño del browser.
     */ }
-  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+    .header {
+      -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
+      clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
+      height: 95vh; } }
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), (webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-width: 125em) {
     .header {
       background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg); } }
   @media (max-width: 37.5em) {

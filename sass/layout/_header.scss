@@ -17,23 +17,25 @@
 */
 
 .header {
-  height: 95vh;
+  height: 85vh;
   background-image: linear-gradient(
       to right bottom,
-      rgba($color-secondary-light, 0.8),
-      rgba($color-secondary-dark, 0.8)
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
     ),
     url(../img/hero-small.jpg);
   background-size: cover;
   background-position: top;
-  -webkit-clip-path: polygon(
-    0% 0%,
-    100% 0%,
-    100% 75vh,
-    0% 100%
-  ); //para que fxne en todos los browsers
-  clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
   position: relative;
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
+  //para que fxne en todos los browsers
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
+
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
+    height: 95vh;
+  } //ver en mis apuntes sobre responsive images @supports
 
   //Responsive Background-image - con mediaquery y resolution switch
 
@@ -42,9 +44,12 @@
   and min-width: pero si es mayor a 600px (37.5em) sino se aplica el hero-small.jpg
   hero-small.jpg en 2x-screen (la de los celulares) se ve bien y no necesitamos que el browser cargue
   la hero.jpg que es más grande de 1200px. El segundo min-width está precedido de una coma, lo que
-  significa que se aplique la imagen apartir de se 600px ó 2000px (125em) */
+  significa que se aplique la imagen apartir de se 600px ó 2000px (125em)
+  El webkit es para que funcione en Safari */
 
-  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+  @media (min-resolution: 192dpi) and (min-width: 37.5em),
+    (webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+    (min-width: 125em) {
     background-image: linear-gradient(
         to right bottom,
         rgba($color-primary-light, 0.8),
