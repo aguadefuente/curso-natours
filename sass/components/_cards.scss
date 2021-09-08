@@ -213,11 +213,13 @@
     font-weight: 100;
   }
 
-  @include respond(tab-port) {
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
     height: auto;
     border-radius: 3px;
     background-color: $color-white;
     box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+    /*este media tiene la condición de que se aplique sólo en pantallas y donde no exista el hover porque
+    es un touch device, ejemplo los celulares, tablets...etc*/
 
     &_side {
       height: auto;

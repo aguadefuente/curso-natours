@@ -39,7 +39,7 @@ hacemos la conversión de px a em: 1em = 16px
 
 1800px = 112.5em
 
-*/
+only screen and: sólo funciona en screen no para print*/
 /*Media-queries que vamos a hacer y el orden:
 - base
 - typography
@@ -133,13 +133,13 @@ html {
     
   Al phone lo sacamos porque con el tab-port tiene igual parámetro 
   */ }
-  @media (max-width: 75em) {
+  @media only screen and (max-width: 75em) {
     html {
       font-size: 56.25%; } }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     html {
       font-size: 50%; } }
-  @media (min-width: 112.5em) {
+  @media only screen and (min-width: 112.5em) {
     html {
       font-size: 75%; } }
 
@@ -162,9 +162,13 @@ body {
   box-sizing: border-box;
   padding: 3rem;
   /*antes habíamos puesto 30px. Ahora son 3rem que multiplicado por 10px del html es igual a 30px*/ }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     body {
       padding: 0; } }
+
+::selection {
+  background-color: #55c57a;
+  color: #fff; }
 
 body {
   font-family: "Lato", sans-serif;
@@ -208,7 +212,7 @@ body {
     animation-name: moveInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out; }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .heading-primary--main {
         letter-spacing: 1rem;
         font-size: 5rem; } }
@@ -220,7 +224,7 @@ body {
     letter-spacing: 1.74rem;
     /*igual a 17.4px*/
     animation: moveInRight 1s ease-out; }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .heading-primary--sub {
         letter-spacing: 0.5rem; } }
 
@@ -244,11 +248,11 @@ body {
   /*esto es para que el color solo ocupe el espacio de la tipografía. Porque el h2 sería un block
   element y ocuparía todo el ancho de la pantalla, y el gradient se vería en todo el ancho*/
   transition: all 0.2s; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .heading-secondary {
       font-size: 3rem;
       margin-top: 6rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .heading-secondary {
       font-size: 2.5rem;
       margin-top: 5.5rem; } }
@@ -274,7 +278,7 @@ body {
 
 .u-margin-bottom-medium {
   margin-bottom: 4rem; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .u-margin-bottom-medium {
       margin-top: 3rem !important; } }
 
@@ -286,7 +290,7 @@ body {
 
 .u-margin-top-big {
   margin-top: 8rem; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .u-margin-top-big {
       margin-top: 5rem !important; } }
 
@@ -517,12 +521,14 @@ ej) .u-margin-bottom-small {margin-bottom: 1.5rem !important;}
   .card_price-value {
     font-size: 6rem;
     font-weight: 100; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
     .card {
       height: auto;
       border-radius: 3px;
       background-color: #fff;
-      box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+      box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+      /*este media tiene la condición de que se aplique sólo en pantallas y donde no exista el hover porque
+    es un touch device, ejemplo los celulares, tablets...etc*/ }
       .card_side {
         height: auto;
         position: relative;
@@ -559,7 +565,7 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     z-index: 10;
     transition: all 0.2s;
     outline-offset: 2rem; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .composition_photo {
         float: left;
         position: relative;
@@ -568,14 +574,14 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     .composition_photo--p1 {
       left: 0;
       top: -2rem; }
-      @media (max-width: 56.25em) {
+      @media only screen and (max-width: 56.25em) {
         .composition_photo--p1 {
           top: 0;
           transform: scale(1.2); } }
     .composition_photo--p2 {
       right: -1rem;
       top: 2rem; }
-      @media (max-width: 56.25em) {
+      @media only screen and (max-width: 56.25em) {
         .composition_photo--p2 {
           top: 0;
           transform: scale(1.3);
@@ -583,7 +589,7 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     .composition_photo--p3 {
       left: 20%;
       top: 10rem; }
-      @media (max-width: 56.25em) {
+      @media only screen and (max-width: 56.25em) {
         .composition_photo--p3 {
           top: 1rem;
           left: 0;
@@ -604,7 +610,7 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.233);
   transition: transform 0.3s; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .feature-box {
       padding: 2rem; } }
   .feature-box_icon {
@@ -623,7 +629,7 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     display: inline-block;
     /*esto es para que el color solo ocupe el espacio de la tipografía. Porque el h2 sería un block
       element y ocuparía todo el ancho de la pantalla, y el gradient se vería en todo el ancho*/ }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .feature-box_icon {
         margin-bottom: 0; } }
   .feature-box:hover {
@@ -676,13 +682,13 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     opacity: 0;
     visibility: hidden;
     transform: translateY(-4rem); }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .form_input:placeholder-shown + .form_label {
         width: 100%; } }
   .form_radio-group {
     width: 49%;
     display: inline-block; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .form_radio-group {
         width: 100%;
         margin-bottom: 2rem; } }
@@ -756,13 +762,13 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     /*tenemos que poner el translate porque como el mixin ya tiene un transform si no repetimos lo
     que define el mismo no nos funcionaría el scale*/
     transition: all 0.4s; }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .popup_content {
         width: 90%; } }
   .popup_left {
     width: 33.333333%;
     display: table-cell; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .popup_left {
         display: none; } }
   .popup_right {
@@ -786,7 +792,7 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     -ms-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .popup_text {
         column-count: 1; } }
   .popup:target {
@@ -822,12 +828,12 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   transform: skewX(-12deg);
   /* el translate es para dar más espacio a la izq.entre la img y el texto. El skew es para enderezar
   la imagen ya que el rectángulo blanco tiene skew para deformarse -12deg*/ }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .story {
       width: 100%;
       padding: 4rem;
       padding-left: 7rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .story {
       transform: skewX(0); } }
   .story_shape {
@@ -849,7 +855,7 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
         height: 15rem;
         width: 15rem;
         border-radius: none; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .story_shape {
         transform: translateX(-3rem) skewX(0); } }
   .story_img {
@@ -861,7 +867,7 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     backface-visibility: hidden; }
   .story_text {
     transform: skewX(12deg); }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .story_text {
         transform: skewX(0); } }
   .story_caption {
@@ -888,13 +894,13 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   padding: 10rem 0;
   font-size: 1.2rem;
   color: #f7f7f7; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .footer {
       padding: 8rem 0; } }
   .footer_logo-box {
     text-align: center;
     margin-bottom: 8rem; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .footer_logo-box {
         margin-bottom: 4rem; } }
   .footer_logo {
@@ -905,7 +911,7 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     padding-top: 2rem;
     display: inline-block;
     width: 85%; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .footer_navigation {
         width: 100%;
         text-align: center; } }
@@ -931,7 +937,7 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     padding-top: 2rem;
     width: 85%;
     float: right; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .footer_copyright {
         width: 100%;
         float: none; } }
@@ -941,10 +947,10 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   margin: 0 auto; }
   .row:not(:last-child) {
     margin-bottom: 8rem; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .row:not(:last-child) {
         margin-bottom: 6rem; } }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .row {
       max-width: 50rem;
       padding: 0 3rem; } }
@@ -956,11 +962,11 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 6rem; }
-      @media (max-width: 56.25em) {
+      @media only screen and (max-width: 56.25em) {
         .row [class^="col-"]:not(:last-child) {
           margin-right: 0;
           margin-bottom: 6rem; } }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .row [class^="col-"] {
         width: 100% !important; } }
   .row .col-1-of-2 {
@@ -1026,10 +1032,10 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
       -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
       clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%);
       height: 95vh; } }
-  @media (min-resolution: 192dpi) and (min-width: 37.5em), (webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-width: 125em) {
+  @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em), only screen and (webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), only screen and (min-width: 125em) {
     .header {
       background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg); } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .header {
       -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 85vh, 0% 100%);
       clip-path: polygon(0% 0%, 100% 0%, 100% 85vh, 0% 100%); } }
@@ -1065,11 +1071,11 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   z-index: 2000;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
   cursor: pointer; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .navigation_button {
       top: 4rem;
       right: 4rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .navigation_button {
       top: 3rem;
       right: 3rem; } }
@@ -1087,11 +1093,11 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   /*tool para sacar las cuentas https://easings.net/. 
     A Bézier curve can be used to specify the velocity over time of an object such as an icon moving 
     from A to B, rather than simply moving at a fixed number of pixels per step*/ }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .navigation_background {
       top: 4.5rem;
       right: 4.5rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .navigation_background {
       top: 3.5rem;
       right: 3.5rem; } }
@@ -1182,11 +1188,12 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   top: 0;
   transform: rotate(-135deg); }
 
+/*Necesitamos JavaScript para que los botons del navbar hagan algo*/
 .section-about {
   background-color: #f7f7f7;
   padding: 25rem 0;
   margin-top: -20vh; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .section-about {
       padding: 20rem 0; } }
 
@@ -1203,7 +1210,7 @@ en el composition que seleccione las composition_photos menos sobre la que estoy
   transform: skewY(-7deg); }
   .feature-section > * {
     transform: skewY(7deg); }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .feature-section {
       padding: 10rem 0; } }
 
@@ -1213,7 +1220,7 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
   background-color: #f7f7f7;
   padding: 25rem 0 15rem 0;
   margin-top: -10rem; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .section-tours {
       padding: 20rem 0 10rem 0; } }
 
@@ -1222,14 +1229,14 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
   position: relative;
   /*lo ponemos position relative por ser el parent de bg-video a quien hemos dado
   position:absolute. De este modo quedará el video encimado como si fuera un background*/ }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .section-stories {
       padding: 10rem 0; } }
 
 .section-book {
   padding: 15rem 0;
   background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .section-book {
       padding: 10rem 0; } }
 
@@ -1243,19 +1250,19 @@ para que nuestras tarjetas no se distorcionen ponemos transform positito, así s
   background-size: cover;
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.5); }
-  @media (max-width: 75em) {
+  @media only screen and (max-width: 75em) {
     .book {
       background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 65%, transparent 65%), url(../img/nat-10.jpg);
       background-size: cover; } }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .book {
       background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%), url(../img/nat-10.jpg); } }
   .book_form {
     width: 50%;
     padding: 2.5rem; }
-    @media (max-width: 75em) {
+    @media only screen and (max-width: 75em) {
       .book_form {
         width: 70%; } }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .book_form {
         width: 100%; } }

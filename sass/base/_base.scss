@@ -81,3 +81,8 @@ body {
     padding: 0;
   } //así a partir de acá o pantalla más chica se borra el reborde blanco
 }
+
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+} //para seleccionar texto
